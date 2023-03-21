@@ -1,0 +1,5 @@
+<h1>Add note to your memory "<%= @memory.title %>"</h1>
+<%= simple_form_for [@memory, @tag] do |f| %>
+  <%= f.association :emotional_tag, collection: @emotional_tags.map {|tag| [tag["emotion"], tag["id"]]} %>
+  <%= f.submit %>
+<% end %>
