@@ -1,9 +1,17 @@
-<%= simple_form_for @memory, data: { controller: 'flatpickr' } do |f| %>
-  <%= f.input :date, as: :string, input_html: { data: { flatpickr_target: "memoryDate" } } %>
+<div class="container">
+  <div class="form">
+    <h2>Create a new memory</h2>
 
-  <%= f.input :title %>
+    <hr>
 
-  <%= f.input :description, as: :text %>
+    <%= simple_form_for @memory, data: { controller: 'flatpickr' } do |f| %>
+      <%= f.input :date, as: :string, input_html: { data: { flatpickr_target: "memoryDate" } } %>
 
-  <%= f.button :submit %>
-<% end %>
+      <%= f.input :title %>
+
+      <%= f.input :description, as: :text %>
+
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>

@@ -1,8 +1,18 @@
-<h2><%= @memory.title %></h2>
-<p><%= @memory.description %></p>
-<p><%= @memory.date %></p>
+<div class="container">
+  <div class="card-memory">
+    <img src="" alt="">
+    <div class="card-memory-infos">
+      <div>
+        <h2><%= @memory.title %></h2>
+        <p><%= @memory.description %></p>
+      </div>
+      <p class="card-memory-date"><%= @memory.date %></p>
+      <img src="" alt="">
+    </div>
+  </div>
 
-<%= link_to "Delete",
-  memory_path(@memory),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this memory?"}
-%>
+  <%= link_to "Delete",
+    memory_path(@memory),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this memory?"}
+  %>
+</div>
