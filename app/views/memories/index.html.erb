@@ -1,9 +1,9 @@
 <ul>
-  <% @memories.each do |memorie| %>
-    <li><%= memorie.name %></li>
+  <% @memories.each do |memory| %>
+    <li><%= memory.title %></li>
   <% end %>
 </ul>
-<%= form_with model: @memorie do |f| %>
+<%= form_with model: @memory do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <%= f.label :date %>
