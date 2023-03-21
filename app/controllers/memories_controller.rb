@@ -21,6 +21,16 @@ class MemoriesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+  
+  def edit
+    @memory = Memory.find(params[:id])
+  end
+
+  def update
+    @memory = Memory.find(params[:id])
+    @memory.update(memory_params)
+    redirect_to memory_path(@memory)
+  end
 
   def destroy
     @memory = Memory.find(params[:id])
