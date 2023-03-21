@@ -1,6 +1,10 @@
 class MemoriesController < ApplicationController
   def index
-    @memories = Memory.all
+    if params[:query].present?
+      @memories = Memory.where(title: params[:query])
+    else
+      @memories = Memory.all
+    end
   end
 
   def new
@@ -21,7 +25,7 @@ class MemoriesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-  
+
   def edit
     @memory = Memory.find(params[:id])
   end
