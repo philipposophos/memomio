@@ -1,0 +1,16 @@
+<div class="main-div">
+  <div class="form">
+    <h1>Edit Note</h1>
+    <hr>
+
+    <%= form_for(@note, url: note_path(@note), method: :patch) do |f| %>
+      <p>
+        <%= f.label :content %> <br>
+        <%= f.text_field :content %>
+      </p>
+      <p>
+        <%= f.submit "Update" %>
+      </p>
+    <% end %>
+  </div>
+</div>
