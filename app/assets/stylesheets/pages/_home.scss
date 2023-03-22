@@ -3,7 +3,7 @@
   height: 90vmin;
   position: relative;
   width: 90vmin;
-  
+
   > div {
     animation: growAndFade 3s infinite ease-out;
     background-color: dodgerblue;
@@ -13,12 +13,12 @@
     position: absolute;
     width: 100%;
   }
-  
+
   .circle1 {
-    animation-delay: 1s;    
+    animation-delay: 1s;
   }
   .circle2 {
-    animation-delay: 2s; 
+    animation-delay: 2s;
   }
   .circle3 {
     animation-delay: 3s;
@@ -35,3 +35,4 @@
     transform: scale(1);
   }
 }
+
