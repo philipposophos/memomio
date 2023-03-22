@@ -3,10 +3,9 @@
     <h1>Edit Note</h1>
     <hr>
 
-    <%= form_for(@note, url: note_path(@note), method: :patch) do |f| %>
+    <%= simple_form_for(@note, url: edit_note_path(@note), method: :patch) do |f| %>
       <p>
-        <%= f.label :content %> <br>
-        <%= f.text_field :content %>
+        <%= f.input :content %>
       </p>
       <p>
         <%= f.submit "Update" %>

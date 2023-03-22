@@ -13,6 +13,7 @@ class MemoriesController < ApplicationController
 
   def show
     @memory = Memory.find(params[:id])
+    @note = Note.new
   end
 
   def create
