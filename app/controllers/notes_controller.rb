@@ -1,14 +1,12 @@
 class NotesController < ApplicationController
   def new
     @note = Note.new
-    authorize @note 
   end
 
   def create
     @note = Note.new(note_params)
     @memory = Memory.find(params[:memory_id])
     @note.memory = @memory 
-    authorize @note
     if @note.save
       redirect_to memory_path(@memory)
     else
@@ -18,12 +16,10 @@ class NotesController < ApplicationController
 
   def edit
     @note = Note.find(params[:id])
-    authorize @note
   end
 
   def update
     @note = Note.find(params[:id])
-    authorize @note
     if Note.update(note_params)
       redirect_to memory_path(@note.memory)
     else
@@ -33,9 +29,9 @@ class NotesController < ApplicationController
 
   def destroy
     @note = Note.find(params[:id])
-    authorize @note
+    @memory = @note.memory
     @note.destroy
-    redirect_to memory_path(@note.memory)
+    redirect_to memory_path(@memory)
   end
 
   private

@@ -16,3 +16,30 @@
     data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this memory?"}
   %>
 </div>
+
+<div class="container">
+  <h5>Notes</h5>
+  <div class="form">
+    <div class="container pt-3">
+      <%= simple_form_for [@memory, @note] do |f| %>
+        <%= f.input_field :content, :placeholder => "Add note" %>
+        <%= f.submit "SUBMIT" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <% if @memory.notes != nil %>
+    <% @memory.notes.each do |note| %>
+      <p><%= note.content %></p>
+      <p><%= note.created_at.strftime("Added on %m/%d/%Y at %I:%M%p") %>
+      <%= link_to edit_note_path(note.id) do %>
+        <i class="fa-solid fa-pen"></i>
+      <% end %>
+      <%= link_to note_path(note.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+        <i class="fa-solid fa-trash"></i>
+      <% end %></p>
+    <% end %>
+  <% end %>
+</div>
