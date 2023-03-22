@@ -1,12 +1,46 @@
 <h1>MEMOMIO</h1>
 <p>Explore your biography</p>
 
+<!--
+PSEUDOCODE:
+1. Create divs for main sections [X]
+2. Create grid with bootstrap or CSS Grid []
+3. Structure the Header Section []
+4. Implement Searchbar Section []
+5. Implement timeline section []
+
+CSS structure {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  margin: 0;
+}
+-->
+
 <div class="container">
-  <%= link_to new_memory_path do %>
-    <div class="circles">
-      <div class="circle1"></div>
-      <div class="circle2"></div>
-      <div class="circle3"></div>
+  <!-- Header section -->
+  <div>
+    <!-- Headline + Claim -->
+    <div>
+      <h1>Memomio</h1>
+      <p>Explore your memory</p>
     </div>
-  <% end %>
+    <!-- CSS "rippled" background -->
+    <div>
+      <%= link_to "Create memory", new_memory_path, class: "" %>
+        <div class="circles">
+          <div class="circle1"></div>
+          <div class="circle2"></div>
+          <div class="circle3"></div>
+        </div>
+    </div>
+  </div>
+
+  <!-- Search bar section -->
+  <div></div>
+
+  <!-- Timeline section -->
+  <div></div>
+
 </div>
