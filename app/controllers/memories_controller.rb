@@ -1,7 +1,7 @@
 class MemoriesController < ApplicationController
   def index
     if params[:query].present?
-      @memories = policy_scope(Memory).where(title: params[:query])
+      @memories = policy_scope(Memory).search_by_title_and_description(params[:query])
     else
       @memories = policy_scope(Memory)
     end
