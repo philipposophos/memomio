@@ -1,12 +1,13 @@
 .header{
   position: relative;
   min-height: fit-content; /* Change this value as per your requirement */
-  background-color: #184E77;
+  background-color: $dark-blue;
   ;
 }
 
 .header-content {
   text-align: center;
+  color: $light-blue;
   padding-top: 5%;
 }
 
@@ -21,6 +22,14 @@
   }
 }
 
+.btn-round{
+  color: $beige;
+  padding: 8px 24px;
+  border-radius: 8 px;
+  background: $dark-red;
+  transition: background 0.3s ease;
+}
+
 
 
 .circles {
@@ -30,7 +39,7 @@
 
   > div {
     animation: growAndFade 3s infinite ease-out;
-    background-color: dodgerblue;
+    background-color: $light-blue;
     border-radius: 50%;
     height: 100%;
     opacity: 0;
