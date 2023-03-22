@@ -1,17 +1,19 @@
 <div class="container">
-  <div class="form">
-    <h2>Create a new memory</h2>
-
-    <hr>
-
-    <%= simple_form_for @memory, data: { controller: 'flatpickr' } do |f| %>
-      <%= f.input :date, as: :string, input_html: { data: { flatpickr_target: "memoryDate" } } %>
-
-      <%= f.input :title %>
-
-      <%= f.input :description, as: :text %>
-
-      <%= f.button :submit %>
-    <% end %>
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-4">
+      <div class="form">
+        <h2>Create a new memory</h2>
+        <hr>
+        <%= simple_form_for @memory, data: { controller: 'flatpickr' } do |f| %>
+          <%= f.input :photo, as: :file %>
+          <%= f.input :date, as: :string, input_html: { data: { flatpickr_target: "memoryDate" } } %>
+          <%= f.input :title %>
+          <%= f.input :description, as: :text %>
+          <div class="form-action">
+            <%= f.button :submit, "Create", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

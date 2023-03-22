@@ -79,3 +79,9 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+#Cloudinary
+gem "cloudinary"
+
+#Pundit authorization
+gem "pundit"
