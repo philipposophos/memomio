@@ -1,13 +1,14 @@
 <div class="container">
   <div class="card-memory">
-    <img src="" alt="">
+    <% if @memory.photo.attached? %>  
+      <%= cl_image_tag @memory.photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
     <div class="card-memory-infos">
       <div>
         <h2><%= @memory.title %></h2>
         <p><%= @memory.description %></p>
       </div>
       <p class="card-memory-date"><%= @memory.date %></p>
-      <img src="" alt="">
     </div>
   </div>
 
