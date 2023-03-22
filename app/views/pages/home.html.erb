@@ -1,6 +1,3 @@
-<h1>MEMOMIO</h1>
-<p>Explore your biography</p>
-
 <!--
 PSEUDOCODE:
 1. Create divs for main sections [X]
@@ -8,27 +5,20 @@ PSEUDOCODE:
 3. Structure the Header Section []
 4. Implement Searchbar Section []
 5. Implement timeline section []
-
-CSS structure {
-  align-items: center;
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  margin: 0;
-}
 -->
+
 
 <div class="container">
   <!-- Header section -->
-  <div>
+  <div class="header">
     <!-- Headline + Claim -->
-    <div>
-      <h1>Memomio</h1>
-      <p>Explore your memory</p>
+    <div class="header-content">
+      <div><h1>Memomio</h1></div>
+      <div><p>Explore your memory</p></div>
     </div>
     <!-- CSS "rippled" background -->
-    <div>
-      <%= link_to "Create memory", new_memory_path, class: "" %>
+    <div class="header-create-memory">
+      <%= link_to "Create memory", new_memory_path, class: "btn-round" %>
         <div class="circles">
           <div class="circle1"></div>
           <div class="circle2"></div>
