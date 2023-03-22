@@ -82,3 +82,6 @@ end
 
 #Cloudinary
 gem "cloudinary"
+
+#Pundit authorization
+gem "pundit"
