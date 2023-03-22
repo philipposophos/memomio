@@ -1,0 +1,70 @@
+.header{
+  position: relative;
+  min-height: fit-content; /* Change this value as per your requirement */
+  background-color: $dark-blue;
+  ;
+}
+
+.header-content {
+  text-align: center;
+  color: $light-blue;
+  padding-top: 5%;
+}
+
+.header-create-memory {
+  position: relative;
+
+  a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.btn-round{
+  color: $beige;
+  padding: 8px 24px;
+  border-radius: 8 px;
+  background: $dark-red;
+  transition: background 0.3s ease;
+}
+
+
+
+.circles {
+  height: 90vmin;
+  position: relative;
+  width: 90vmin;
+
+  > div {
+    animation: growAndFade 3s infinite ease-out;
+    background-color: $light-blue;
+    border-radius: 50%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+  }
+
+  .circle1 {
+    animation-delay: 1s;
+  }
+  .circle2 {
+    animation-delay: 2s;
+  }
+  .circle3 {
+    animation-delay: 3s;
+  }
+}
+
+@keyframes growAndFade {
+  0% {
+    opacity: .25;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
