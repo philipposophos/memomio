@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import EditNoteController from "./edit_note_controller"
+application.register("edit-note", EditNoteController)
+
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 

@@ -1,12 +1,15 @@
 class NotesController < ApplicationController
   def new
     @note = Note.new
+    authorize @note
   end
 
   def create
     @note = Note.new(note_params)
     @memory = Memory.find(params[:memory_id])
-    @note.memory = @memory 
+    @note.memory = @memory
+    authorize @note
+    authorize @memory 
     if @note.save
       redirect_to memory_path(@memory)
     else
@@ -16,12 +19,17 @@ class NotesController < ApplicationController
 
   def edit
     @note = Note.find(params[:id])
+    authorize @note
   end
 
   def update
     @note = Note.find(params[:id])
-    if Note.update(note_params)
-      redirect_to memory_path(@note.memory)
+    authorize @note
+    if @note.update(note_params)
+      respond_to do |format|
+        format.html { redirect_to memory_path(@note.memory) }
+        format.text { render partial: "memories/note_infos", locals: {note: @note}, formats: [:html] }
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -30,6 +38,8 @@ class NotesController < ApplicationController
   def destroy
     @note = Note.find(params[:id])
     @memory = @note.memory
+    authorize @note
+    authorize @memory
     @note.destroy
     redirect_to memory_path(@memory)
   end
