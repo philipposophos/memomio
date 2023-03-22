@@ -20,8 +20,11 @@ class NotesController < ApplicationController
 
   def update
     @note = Note.find(params[:id])
-    if Note.update(note_params)
-      redirect_to memory_path(@note.memory)
+    if @note.update(note_params)
+      respond_to do |format|
+        format.html { redirect_to memory_path(@note.memory) }
+        format.text { render partial: "memories/note_infos", locals: {note: @note}, formats: [:html] }
+      end
     else
       render :edit, status: :unprocessable_entity
     end
