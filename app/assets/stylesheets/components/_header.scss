@@ -2,7 +2,8 @@
   position: relative;
   min-height: fit-content; /* Change this value as per your requirement */
   background-color: $dark-blue;
-  ;
+  margin-top: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .header-content {
@@ -19,23 +20,24 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 999;
   }
 }
 
 .btn-round{
   color: $beige;
-  padding: 8px 24px;
-  border-radius: 8 px;
+  padding: 65px 24px;
+  border-radius: 50%;
+  height: 150px;
   background: $dark-red;
   transition: background 0.3s ease;
 }
 
-
-
 .circles {
+  // text-align: center;
   height: 90vmin;
   position: relative;
-  width: 90vmin;
+  width: 100%;
 
   > div {
     animation: growAndFade 3s infinite ease-out;
