@@ -29,17 +29,23 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container" data-controller="edit-note">
   <% if @memory.notes != nil %>
     <% @memory.notes.each do |note| %>
-      <p><%= note.content %></p>
-      <p><%= note.created_at.strftime("Added on %m/%d/%Y at %I:%M%p") %>
-      <%= link_to edit_note_path(note.id) do %>
-        <i class="fa-solid fa-pen"></i>
-      <% end %>
-      <%= link_to note_path(note.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-        <i class="fa-solid fa-trash"></i>
-      <% end %></p>
+      <div class="note-infos" data-edit-note-target="infos">
+        <p><%= note.content %></p>
+        <p><%= note.created_at.strftime("Added on %m/%d/%Y at %I:%M%p") %>
+        <button aria-label="Edit note">
+          <i class="fa-solid fa-pen" data-action="click->edit-note#displayForm"></i>
+        </button>
+        <%= link_to note_path(note.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+          <i class="fa-solid fa-trash"></i>
+        <% end %></p>
+      </div>
+        <%= simple_form_for note, html: {class: "d-none", data: {edit_note_target: "form", action: "submit->edit-movie#update"}} do |f| %>
+          <%= f.input :content %>
+          <%= f.submit "Update" %>
+        <% end %>
     <% end %>
   <% end %>
 </div>
