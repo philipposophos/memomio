@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import EditMemoryController from "./edit_memory_controller"
+application.register("edit-memory", EditMemoryController)
+
 import EditNoteController from "./edit_note_controller"
 application.register("edit-note", EditNoteController)
 
