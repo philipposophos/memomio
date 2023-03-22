@@ -1,7 +1,8 @@
 class MemoriesController < ApplicationController
   def index
     if params[:query].present?
-      @memories = Memory.where(title: params[:query])
+      # @memories = Memory.where(title: params[:query])
+      @memories = Memory.search_by_title_and_description(params[:query])
     else
       @memories = Memory.all
     end

@@ -10,8 +10,4 @@ Rails.application.routes.draw do
   resources :notes, only: [:edit, :update, :destroy]
 
   resources :tags, only: [:destroy]
-
-  get "memories", to: "memories#index"
-  get "memories/:id/edit", to: "memories#edit", as: :edit_memorie
-  patch "memories/:id", to: "memories#update"
 end
