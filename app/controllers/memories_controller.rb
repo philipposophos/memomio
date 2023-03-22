@@ -38,9 +38,15 @@ class MemoriesController < ApplicationController
 
   def update
     @memory = Memory.find(params[:id])
-    @memory.update(memory_params)
     authorize @memory
-    redirect_to memory_path(@memory)
+    if @memory.update(memory_params)
+      respond_to do |format|
+        format.html { redirect_to memory_path(@memory) }
+        format.text { render partial: "memories/memory_infos", locals: {memory: @memory}, formats: [:html] }
+      end
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
