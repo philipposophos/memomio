@@ -5,12 +5,10 @@
     <hr>
 
     <%= simple_form_for @memory, data: { controller: 'flatpickr' } do |f| %>
+      <%= f.input :photo, as: :file %>
       <%= f.input :date, as: :string, input_html: { data: { flatpickr_target: "memoryDate" } } %>
-
       <%= f.input :title %>
-
       <%= f.input :description, as: :text %>
-
       <%= f.button :submit %>
     <% end %>
   </div>
