@@ -10,8 +10,8 @@
   overflow: hidden;
   padding: 0;
   color: $dark-blue;
-  background-color: white;
-
+  background-color: rgba(255, 255, 255, 0);
+  margin-bottom: 10vh;
   h2 {
     font-weight: 700;
   }
@@ -29,7 +29,9 @@
     left: 27px;
     height: 100%;
     width: 4px;
-    background: rgba(24, 78, 119, 0.2);
+    background: rgba(24, 78, 119, 0.616);
+    box-shadow: 0 1px 4px rgba(255, 255, 255, 0.626);
+    border-radius: 2px;
   }
 
 }
@@ -63,7 +65,7 @@
 .cd-timeline__content {
   flex-grow: 1; // expand element so that it takes up all the available space inside its parent
   position: relative;
-  background: white;
+  background: rgba(234, 236, 246, 0.888);
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
