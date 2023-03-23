@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700'); // custom font
+
+// -------------------------------------------------
+
+// Responsive Vertical Timeline - by CodyHouse.co
+
+// -------------------------------------------------
+.cd-main-header {
+  height: 300px;
+  background: navy;
+  color: white;
+ 
+  h1 {
+    color: inherit;
+  }
+}
+
+.cd-timeline {
+  overflow: hidden;
+  padding: 0;
+  color: cornflowerblue;
+  background-color: white;
+
+  h2 {
+    font-weight: 700;
+  }
+}
+
+.cd-timeline__container {
+  position: relative;
+  padding: 0;
+
+  &::before { // this is the timeline vertical line
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 18px;
+    height: 100%;
+    width: 10px;
+    background: gray;
+  }
+
+}
+
+.cd-timeline__block {
+  display: flex;
+  position: relative;
+  z-index: 1; // make sure content is above the timeline vertical line
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.cd-timeline__img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.cd-timeline__content {
+  flex-grow: 1; // expand element so that it takes up all the available space inside its parent
+  position: relative;
+  background: beige;
+  padding: 10px;
+  margin-right: 10px;
+
+  &::before { // triangle next to content block
+    content: '';
+    position: absolute;
+    top: 16px;
+    right: 90%;
+    //@include triangle(left, 7px, var(--color-white));
+  }
+
+  h2 {
+    color: cornflowerblue;
+  }
+}
+
+.cd-timeline__date {
+  color: gray;
+}
+
+
+@keyframes cd-bounce-1 {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);    
+  }
+}
+
+@keyframes cd-bounce-2 {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);   
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateX(20px);       
+  }
+
+  100% {
+    transform: translateX(0);       
+  }
+}
+
+@keyframes cd-bounce-2-inverse {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);   
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateX(-20px);
+  }
+
+  100% {
+    transform: translateX(0);    
+  }
+}
