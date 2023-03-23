@@ -321,6 +321,11 @@ clone-deep@^4.0.1:
     kind-of "^6.0.2"
     shallow-clone "^3.0.0"
 
+codyframe@^4.0.5:
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/codyframe/-/codyframe-4.0.5.tgz#5a408160f4c815ee811b4d504ed1f68eabd0faff"
+  integrity sha512-lCkmJ+xad7lTuCgSWH3drL2TxA6py2oUahaeo4wX9Mm/KkdvOtU2Uk54UynrYwzKBehmvBavQ+m6B6wYggrodw==
+
 colorette@^2.0.14:
   version "2.0.19"
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-2.0.19.tgz#cdf044f47ad41a0f4b56b3a0d5b4e6e1a2d5a798"
