@@ -28,7 +28,7 @@ PSEUDOCODE:
   </div>
 
   <!-- Search bar section -->
-  <div class="search-bar" style=" margin-top: 5%; ">
+  <!-- <div class="search-bar" style=" margin-top: 5%; ">
     <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get">
     <div class="search-form-control form-group">
       <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Search memories" />
@@ -39,7 +39,18 @@ PSEUDOCODE:
   </div>
 
   </form>
-    </div>
+    </div> -->
+
+<form class="search-box">
+<%= form_with url: memories_path, method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    placeholder: "Find a memory",
+    autocomplete: "off"
+  %>
+  <button type="reset"></button>
+  </form>
+<% end %>
 
     <!-- Timeline section -->
     <div></div>
