@@ -19,16 +19,17 @@
 
 .cd-timeline__container {
   position: relative;
+  width: 95vw;
   padding: 0;
 
   &::before { // this is the timeline vertical line
     content: '';
     position: absolute;
     top: 0;
-    left: 18px;
+    left: 27px;
     height: 100%;
     width: 4px;
-    background: $dark-blue;
+    background: rgba(24, 78, 119, 0.2);
   }
 
 }
@@ -48,32 +49,39 @@
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 55px;
 
   img {
-    width: 24px;
-    height: 24px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: white 4px solid;
+    box-shadow: 0 0 5px $dark-blue;
   }
 }
 
 .cd-timeline__content {
   flex-grow: 1; // expand element so that it takes up all the available space inside its parent
   position: relative;
-  background: $vanilla-white;
+  background: white;
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border: 1px solid $dark-blue;
+  box-shadow: 0 0 5px $dark-blue;
 
   &::before { // triangle next to content block
     content: '';
     position: absolute;
-    top: 16px;
-    right: 90%;
-    //@include triangle(left, 7px, var(--color-white));
+    top: 50px;
+    right: 100%;
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+    border-right-color: $dark-blue;
+    transform:translate(0, -50%);
   }
+
 
   h2 {
     color: $dark-blue;
