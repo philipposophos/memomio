@@ -25,10 +25,10 @@
     content: '';
     position: absolute;
     top: 0;
-    left: 18px;
+    left: 25px;
     height: 100%;
     width: 4px;
-    background: $dark-blue;
+    background: rgba(24, 78, 119, 0.2);
   }
 
 }
@@ -48,13 +48,15 @@
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 55px;
+  height: 55px;
 
   img {
-    width: 24px;
-    height: 24px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: white 4px solid;
+    box-shadow: 0 0 15px $dark-blue;
   }
 }
 
@@ -65,7 +67,7 @@
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px $dark-blue;
 
   &::before { // triangle next to content block
     content: '';
