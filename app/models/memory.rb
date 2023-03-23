@@ -1,6 +1,6 @@
 class Memory < ApplicationRecord
   has_one_attached :photo
-  
+
   belongs_to :user
   has_many :notes, dependent: :destroy
   has_many :tags, dependent: :destroy
