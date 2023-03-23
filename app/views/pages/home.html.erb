@@ -40,7 +40,7 @@ PSEUDOCODE:
 
     <!-- Timeline section -->
   <section class="cd-timeline js-cd-timeline">
-    <% memories = Memory.all %>
+    <% memories = Memory.where(user: current_user) %>
       <div class="container max-width-lg cd-timeline__container">
         <% memories.each do |memory| %>
         <div class="cd-timeline__block">
