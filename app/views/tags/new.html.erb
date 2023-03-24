@@ -3,12 +3,8 @@
     <h1>Add note to your memory "<%= @memory.title %>"</h1>
 
     <hr>
-
     <%= simple_form_for [@memory, @tag] do |f| %>
-      <%= f.association :emotional_tag, collection: @emotional_tags.map {|tag| [tag["emotion"], tag["id"]]} %>
-      <%= f.input :emotional_tag, as: :radio_buttons %>
-      <%= f.input :emotional_tag, as: :check_boxes %>
-      <%= f.association :emotional_tag,
+      <%= f.association :emotional_tag, collection: @emotional_tags.map {|tag| [tag["emotion"], tag["id"]]},
                   as: :check_boxes,
                   input_html: { class: "tag-selector" },
                   item_wrapper_class: 'tag-item' %>
