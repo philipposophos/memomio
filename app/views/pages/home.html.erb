@@ -11,43 +11,18 @@ PSEUDOCODE:
 <div class="container">
   <!-- Header section -->
   <div class="header">
+    <h1>MEMOMIO</h1>
     <!-- CSS "rippled" background -->
     <div class="header-create-memory">
       <%= link_to new_memory_path, class: "btn sun-btn" do %>
-        <i class="fa-solid fa-plus"></i>
+        <%# <i class="fa-solid fa-plus" style="font-size: 50px; text-shadow: 0 1px 4px white;"></i> %>
       <% end %>
     </div>
+    <h3>EXPLORE YOUR BIOGRAPHY</h3>
   </div>
 
   <!-- Search bar section -->
-<<<<<<< HEAD
-<<<<<<< HEAD
-  <!-- <div class="search-bar" style=" margin-top: 5%; ">
-    <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get">
-    <div class="search-form-control form-group">
-      <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Search memories" />
-      <button name="button" type="submit" class="btn btn-flat">
-        <i class="fas fa-search"></i>
-      </button>
-    </div>
-  </div>
-
-  </form>
-    </div> -->
-
-<form class="search-box">
-<%= form_with url: memories_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    placeholder: "Find a memory",
-    autocomplete: "off"
-  %>
-  <button type="reset"></button>
-  </form>
-<% end %>
-
-=======
-  <div class="search-bar" style="margin-top: 5%; margin-bottom: 5%; text-align: center;">
+  <div class="search-bar" style="margin-top: 5%; margin-bottom: 10vh; text-align: center;">
     <form class="search-box">
     <%= form_with url: memories_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
@@ -60,43 +35,28 @@ PSEUDOCODE:
     <% end %>
   </div>
 
->>>>>>> c179ba97fe8cf26c21015564d0f7a066ae823ac3
-=======
-  <div class="search-bar" style="margin-top: 5%; margin-bottom: 5%; text-align: center;">
-    <form class="search-box">
-    <%= form_with url: memories_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        placeholder: "Find a memory",
-        autocomplete: "off"
-      %>
-      <button type="reset"></button>
-      </form>
-    <% end %>
-  </div>
-
->>>>>>> origin
     <!-- Timeline section -->
   <section class="cd-timeline js-cd-timeline">
     <% memories = Memory.where(user: current_user) %>
+    <% memos = memories.sort_by(&:date) %>
+    
       <div class="container max-width-lg cd-timeline__container">
-        <% memories.each do |memory| %>
-        <div class="cd-timeline__block">
-          <div class="cd-timeline__img cd-timeline__img--picture">
-            <% if memory.photo.attached? %>
-              <%= cl_image_tag memory.photo.key, height: 300, width: 400, crop: :fill %>
-            <% end %>
-          </div> <!-- cd-timeline__img -->
+        <% memos.each do |memory| %>
+          <%= link_to memory_path(memory), style: "text-decoration: none;" do %>
+            <div class="cd-timeline__block">
+              <div class="cd-timeline__img cd-timeline__img--picture">
+                <% if memory.photo.attached? %>
+                  <%= cl_image_tag memory.photo.key, height: 300, width: 400, crop: :fill %>
+                <% end %>
+              </div> <!-- cd-timeline__img -->
 
-          <div class="cd-timeline__content text-component">
-            <h2><%= memory.title %></h2>
-            <p class="color-contrast-medium"> <%= memory.description %></p>
-
-            <div class="flex justify-between items-center">
-              <span class="cd-timeline__date"><%= memory.date %></span>
-            </div>
-          </div> <!-- cd-timeline__content -->
-        </div> <!-- cd-timeline__block -->
+              <div class="cd-timeline__content text-component" style="text-align: center;">
+                <h2><%= memory.title %></h2>
+                <p style="color: #184E77; font-weight: bold;"><%= memory.date.strftime("%B %d, %Y") %></p>
+                <p style="color: #184E77;"> <%= memory.description %> </p>
+              </div> <!-- cd-timeline__content -->
+            </div> <!-- cd-timeline__block -->
+          <% end %>
         <% end %>
       </div>
   </section> <!-- cd-timeline -->
@@ -278,7 +238,7 @@ PSEUDOCODE:
 
           <rect id="bg2" y="-59.8" width="750" height="612.4" transform="translate(750 492.8) rotate(180)"
               fill="url(#bg2-grad)" />
-        
+
           <g id="fstar">
               <image width="707" height="429" transform="translate(728.46 16.5) scale(0.24)"
                   xlink:href="https://i.ibb.co/TWfhqRG/fstar.png" />
@@ -366,7 +326,7 @@ PSEUDOCODE:
               <g id="info2" fill="#fff" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5">
                   <polygon id="arrow2"
                       points="395.54 482.2 393.42 484.32 375.21 466.11 357 484.32 354.88 482.2 375.21 461.87 395.54 482.2"/>
-                  
+
               </g>
               <polygon id="h3-5"
                   points="756.31 330.55 750.57 327.01 742.42 331.08 719.12 317.36 705.87 311.91 695.11 307.32 688.01 314.24 675.69 336.9 665.32 346.76 657.77 353.08 641.17 353.46 633.52 362.58 626.63 373.11 618.53 378.94 596.8 411.28 588.95 404.93 578.86 406.48 539.9 443.36 472 493.8 556 490.91 756.14 490.91 756.31 330.55"
@@ -385,7 +345,7 @@ PSEUDOCODE:
           </g>
       </g>
 
-      
+
       <!-- SCENE 1 -->
       <g id="scene1">
           <g id="hills1">
