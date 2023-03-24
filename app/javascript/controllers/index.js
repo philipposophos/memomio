@@ -13,5 +13,8 @@ application.register("edit-note", EditNoteController)
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
+import GsapController from "./gsap_controller"
+application.register("gsap", GsapController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
