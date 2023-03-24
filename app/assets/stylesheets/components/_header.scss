@@ -1,16 +1,30 @@
 .header{
   display: box;
   display: flex;
+  flex-direction: column;
   box-pack: center;
-  justify-content: center;
+  justify-content: space-evenly;
   box-align: center;
   align-items: center;
   width: 100%;
-  height: 60vh;
+  height: 70vh;
   overflow: hidden;
   font-family: 'Noto Sans', sans-serif;
   box-sizing: border-box;
-  margin-bottom: 35vh;
+  margin-bottom: 30vh;
+}
+
+.header > h3 {
+  padding-top: 100px;
+  color:aliceblue;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.47);
+}
+
+.header > h1 {
+  color: $dark-blue;
+  font-weight: bolder;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.479);
+  font-size: xx-large;
 }
 
 .sun-btn {
@@ -18,14 +32,14 @@
   position: relative;
   width: 130px;
   height: 130px;
+  border: 1px solid white;
   background: linear-gradient(to bottom, rgb(255, 196, 47) 0%, tomato 100%);
   box-shadow: 0 4px 4px rgba(55, 6, 63, 0.3);
   border-radius: 50%;
-  line-height: 120px;
+  line-height: 140px;
   text-align: center;
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.759);
-  font-size: large;
+  color: rgba(153, 14, 14, 0.468);
 }
 
 
@@ -42,7 +56,7 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: rgb(255, 107, 21);
+  background: rgb(134, 3, 18);
   opacity: 0;
   content: '';
   animation: pulse 1s infinite;
