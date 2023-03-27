@@ -9,7 +9,7 @@
 .cd-timeline {
   overflow: hidden;
   padding: 0;
-  color: $dark-purple;
+  color: $dark-blue;
   background-color: rgba(255, 255, 255, 0);
   margin-bottom: 10vh;
   h2 {
@@ -58,20 +58,19 @@
     width: 50px;
     border-radius: 50%;
     border: white 4px solid;
-    box-shadow: 0 0 5px $dark-purple;
+    box-shadow: 0 0 5px $dark-blue;
   }
 }
 
 .cd-timeline__content {
   flex-grow: 1; // expand element so that it takes up all the available space inside its parent
   position: relative;
-  background: rgba(255, 255, 255, 0.92);
-  color: $dark-purple;
+  background: rgba(234, 236, 246, 0.888);
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
-  border: 1px solid $dark-purple;
-  box-shadow: 0 0 5px $dark-purple;
+  border: 1px solid $dark-blue;
+  box-shadow: 0 0 5px $dark-blue;
 
   &::before { // triangle next to content block
     content: '';
@@ -81,20 +80,18 @@
     width: 0;
     height: 0;
     border: 7px solid transparent;
-    border-right-color: $dark-purple;
+    border-right-color: $dark-blue;
     transform:translate(0, -50%);
   }
 
 
-
-}
-
-.date {
-  font-weight: bold;
+  h2 {
+    color: $dark-blue;
+  }
 }
 
 .cd-timeline__date {
-  color: $dark-purple;
+  color: $dark-blue;
 }
 
 
