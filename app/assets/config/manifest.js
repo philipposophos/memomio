@@ -1,3 +1,6 @@
-//= link_tree ../images
-//= link_directory ../stylesheets .css
-//= link_tree ../builds
+//= link manifest.json
+//= link favicon.png
+//= link application.css
+//= link application.js
+//= link temp_logo.png
+//= require_tree .
