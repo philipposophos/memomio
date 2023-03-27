@@ -75,7 +75,7 @@
   &::before { // triangle next to content block
     content: '';
     position: absolute;
-    top: 50px;
+    top: 50%;
     right: 100%;
     width: 0;
     height: 0;

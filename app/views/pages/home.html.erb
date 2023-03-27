@@ -28,8 +28,16 @@
     <!-- Timeline section -->
   <section class="cd-timeline js-cd-timeline">
     <% memories = Memory.where(user: current_user) %>
-    <% memos = memories.sort_by(&:date) %>
-
+    <% if memories.length < 16 %>
+      <% memos = memories.sort_by(&:date).reverse() %>
+    <% else %>
+      <% key_memos = memories.where(key_memory: true) %>
+      <% if key_memos.length < 15 %>
+        <% x = 15 - key_memos.length %>
+        <% non_key = memories.where(key_memory: false).sort_by(&:date).reverse().first(x) %>
+        <% memos = (key_memos + non_key).sort_by(&:date).reverse() %>
+      <% end %>
+    <% end %>
       <div class="container max-width-lg cd-timeline__container">
         <% memos.each do |memory| %>
           <%= link_to memory_path(memory), style: "text-decoration: none;" do %>
@@ -43,7 +51,7 @@
               <div class="cd-timeline__content text-component" style="text-align: center;">
                 <h2><%= memory.title %></h2>
                 <p style="color: #184E77; font-weight: bold;"><%= memory.date.strftime("%B %d, %Y") %></p>
-                <p style="color: #184E77;"> <%= memory.description %> </p>
+                <p style="color: #184E77;"> <%= truncate(memory.description, :length => 60, :separator => ' ') %> </p>
               </div> <!-- cd-timeline__content -->
             </div> <!-- cd-timeline__block -->
           <% end %>
