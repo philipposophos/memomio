@@ -9,6 +9,7 @@
           <%= f.input :date, as: :string, input_html: { data: { flatpickr_target: "memoryDate" } } %>
           <%= f.input :title %>
           <%= f.input :description, as: :text %>
+          <%= f.input :key_memory, :input_html => { :checked => true } %>
           <div class="form-action">
             <%= f.button :submit, "Create", class: "btn btn-primary" %>
           </div>
