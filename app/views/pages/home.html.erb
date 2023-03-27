@@ -11,20 +11,6 @@
     <h3>EXPLORE YOUR BIOGRAPHY</h3>
   </div>
 
-  <!-- Search bar section -->
-  <div class="search-bar" style="margin-top: 5%; margin-bottom: 10vh; text-align: center;">
-    <form class="search-box">
-    <%= form_with url: memories_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        placeholder: "Find a memory",
-        autocomplete: "off"
-      %>
-      <button type="reset"></button>
-      </form>
-    <% end %>
-  </div>
-
     <!-- Timeline section -->
   <section class="cd-timeline js-cd-timeline">
     <% memories = Memory.where(user: current_user) %>
