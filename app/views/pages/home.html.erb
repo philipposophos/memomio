@@ -11,21 +11,6 @@
     <h3>EXPLORE YOUR BIOGRAPHY</h3>
   </div>
 
-  <!-- Old Search Bar
-  <div class="search-bar" style="margin-top: 5%; margin-bottom: 10vh; text-align: center;">
-    <form class="search-box">
-    <%= form_with url: memories_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        placeholder: "Find a memory",
-        autocomplete: "off"
-      %>
-      <button type="reset"></button>
-      </form>
-    <% end %>
-  </div>
-  -->
-
     <!-- Timeline section -->
   <section class="cd-timeline js-cd-timeline">
     <% memories = Memory.where(user: current_user) %>
@@ -51,8 +36,8 @@
 
               <div class="cd-timeline__content text-component" style="text-align: center;">
                 <h2><%= memory.title %></h2>
-                <p style="color: #184E77; font-weight: bold;"><%= memory.date.strftime("%B %d, %Y") %></p>
-                <p style="color: #184E77;"> <%= truncate(memory.description, :length => 60, :separator => ' ') %> </p>
+                <p class="date"><%= memory.date.strftime("%B %d, %Y") %></p>
+                <p> <%= truncate(memory.description, :length => 60, :separator => ' ') %> </p>
               </div> <!-- cd-timeline__content -->
             </div> <!-- cd-timeline__block -->
           <% end %>
