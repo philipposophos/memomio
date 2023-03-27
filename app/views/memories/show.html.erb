@@ -49,7 +49,7 @@
               <i class="fa-regular fa-face-frown" style="color: teal; font-size: 20px;"></i>
             <% end %>
           <% end %>
-          <% if tag.emotional_tag.emotion == "ok"  %>
+          <% if tag.emotional_tag.emotion == "okay"  %>
             <%= link_to tag_path(tag.id), data: {turbo_method: :delete} do %>
               <i class="fa-regular fa-face-meh" style="color: green; font-size: 20px;"></i>
             <% end %>

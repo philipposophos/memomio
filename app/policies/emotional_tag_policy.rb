@@ -10,6 +10,10 @@ class EmotionalTagPolicy < ApplicationPolicy
     true
   end
 
+  def create?
+    true
+  end
+
   def index?
     true
   end
