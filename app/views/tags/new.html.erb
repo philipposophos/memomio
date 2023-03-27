@@ -1,10 +1,10 @@
 <div class="container">
   <div class="form">
-    <h1>Add emotional tag to "<%= @memory.title %>"</h1>
+    <h1><%= @memory.title %></h1>
 
     <hr>
     <%= simple_form_for [@memory, @tag] do |f| %>
-      <%= f.association :emotional_tag, collection: @emotional_tags.map {|tag| [tag["emotion"], tag["id"]]},
+      <%= f.association :emotional_tag, collection: @emotional_tags.map { |tag| [tag["emotion"], tag["id"]] },
                   as: :check_boxes,
                   input_html: { class: "tag-selector" },
                   item_wrapper_class: 'tag-item' %>
