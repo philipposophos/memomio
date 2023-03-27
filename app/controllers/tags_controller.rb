@@ -11,10 +11,8 @@ class TagsController < ApplicationController
   def create
     @memory = Memory.find(params[:memory_id])
     @tag = Tag.new(tag_params)
-    @emotional_tags = EmotionalTag.all
     @tag.memory = @memory
     authorize @memory
-    authorize @emotional_tags
     authorize @tag
 
     if @tag.save

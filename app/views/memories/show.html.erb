@@ -8,6 +8,7 @@
             <%= f.input :date, as: :string, input_html: { data: { flatpickr_target: "memoryDate" } } %>
             <%= f.input :title %>
             <%= f.input :description, as: :text %>
+            <%= f.input :key_memory, :input_html => { :checked => true } %>
             <div class="form-action">
               <%= f.button :submit, "Update", class: "btn btn-primary" %>
             </div>
@@ -68,38 +69,35 @@
     </div>
   </div>
 
-  <div class="container">
-    <div class="container-notes">
-      <h5>Notes</h5>
-      <div class="form">
-        <div class="container pt-3">
-          <%= simple_form_for [@memory, @note] do |f| %>
-            <%= f.input_field :content, :placeholder => "Add note" %>
-            <%= f.submit "SUBMIT", class: "btn btn-primary" %>
+  <div class="container" style="padding-bottom: 20px;">
+    <div class="card-memory">
+      <h5 style="text-align: center; margin-top: 20px;">Notes</h5>
+      <div class="form" style="margin-top: 0; padding-top: o;">
+        <%= simple_form_for [@memory, @note] do |f| %>
+          <%= f.input_field :content, :placeholder => "Add note", style: "width: 100%;" %>
+          <%= f.submit "✔️", style: "border: 1px solid #5e548e; border-radius: 4px; background-color: transparent; margin-bottom: 15px; align-item: center; width: 100%; margin 0 auto;" %>
+        <% end %>
+      </div>
+      <div class="container" data-controller="edit-note">
+        <div class="container-edit-note">
+          <% if @memory.notes != nil %>
+            <% @memory.notes.each do |note| %>
+              <div class="note-infos" style="padding: 20px;" data-edit-note-target="infos">
+                <p style="font-size: 20px; color: black;"><%= note.content %></p>
+                <p style="color: gray;"><%= note.created_at.strftime("Added on %m/%d/%Y at %I:%M%p") %>
+                <i class="fa-solid fa-pen" style="font-size: 20px; margin-left: 15%;"data-action="click->edit-note#displayForm"></i>
+                <%= link_to note_path(note.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                  <i class="fa-solid fa-trash" style="font-size: 20px; color:gray; padding-left: 9%;"></i>
+                <% end %></p>
+              </div>
+                <%= simple_form_for note, html: {class: "d-none", style:"width: 88vw;", data: {edit_note_target: "form", action: "submit->edit-movie#update"}} do |f| %>
+                  <%= f.input :content %>
+                  <%= f.submit "Update" %>
+                <% end %>
+            <% end %>
           <% end %>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="container" data-controller="edit-note">
-    <div class="container-edit-note">
-      <% if @memory.notes != nil %>
-        <% @memory.notes.each do |note| %>
-          <div class="note-infos" data-edit-note-target="infos">
-            <p><%= note.content %></p>
-            <p><%= note.created_at.strftime("Added on %m/%d/%Y at %I:%M%p") %>
-            <i class="fa-solid fa-pen" data-action="click->edit-note#displayForm"></i>
-            <%= link_to note_path(note.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-              <i class="fa-solid fa-trash"></i>
-            <% end %></p>
-          </div>
-            <%= simple_form_for note, html: {class: "d-none", data: {edit_note_target: "form", action: "submit->edit-movie#update"}} do |f| %>
-              <%= f.input :content %>
-              <%= f.submit "Update" %>
-            <% end %>
-        <% end %>
-      <% end %>
     </div>
   </div>
 </div>
