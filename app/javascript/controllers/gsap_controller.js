@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 // Connects to data-controller="gsap"
 export default class extends Controller {
   connect() {
+    console.log("Testing")
     gsap.registerPlugin(ScrollTrigger);
     let speed = 100;
 
@@ -17,7 +18,7 @@ export default class extends Controller {
         scrub: 3,
     });
 
-    // hills animation 
+    // hills animation
     scene1.to("#h1-1", { y: 3 * speed, x: 1 * speed, scale: 0.9, ease: "power1.in" }, 0)
     scene1.to("#h1-2", { y: 2.6 * speed, x: -0.6 * speed, ease: "power1.in" }, 0)
     scene1.to("#h1-3", { y: 1.7 * speed, x: 1.2 * speed }, 0.03)
@@ -76,7 +77,7 @@ export default class extends Controller {
         scrub: 1,
     });
 
-    //sun motion 
+    //sun motion
     sun.to("#bg_grad", { attr: { cy: "330" } }, 0.00)
 
     //bg change
@@ -215,22 +216,5 @@ export default class extends Controller {
     window.onbeforeunload = function() {
         window.scrollTo(0, 0);
     }
-
-
-let fullscreen;
-let fsEnter = document.getElementById('fullscr');
-fsEnter.addEventListener('click', function (e) {
-    e.preventDefault();
-    if (!fullscreen) {
-        fullscreen = true;
-        document.documentElement.requestFullscreen();
-        fsEnter.innerHTML = "Exit Fullscreen";
-    }
-    else {
-        fullscreen = false;
-        document.exitFullscreen();
-        fsEnter.innerHTML = "Go Fullscreen";
-    }
-});
   }
 }
