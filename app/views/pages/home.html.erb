@@ -60,7 +60,7 @@ PSEUDOCODE:
               <div class="cd-timeline__content text-component" style="text-align: center;">
                 <h2><%= memory.title %></h2>
                 <p style="color: #184E77; font-weight: bold;"><%= memory.date.strftime("%B %d, %Y") %></p>
-                <p style="color: #184E77;"> <%= memory.description %> </p>
+                <p style="color: #184E77;"> <%= truncate(memory.description, :length => 60, :separator => ' ') %> </p>
               </div> <!-- cd-timeline__content -->
             </div> <!-- cd-timeline__block -->
           <% end %>
