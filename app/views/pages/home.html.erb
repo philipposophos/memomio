@@ -37,7 +37,7 @@ PSEUDOCODE:
     <!-- Timeline section -->
   <section class="cd-timeline js-cd-timeline">
     <% memories = Memory.where(user: current_user) %>
-    <% memos = memories.sort_by(&:date) %>
+    <% memos = memories.sort_by(&:date).reverse() %>
     
       <div class="container max-width-lg cd-timeline__container">
         <% memos.each do |memory| %>
