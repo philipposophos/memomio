@@ -20,11 +20,9 @@
             <%= cl_image_tag @memory.photo.key, height: 300, width: 400, crop: :fill %>
           <% end %>
           <div class="card-memory-infos">
-            <div>
               <h2><%= @memory.title %></h2>
+              <p class="date"><%= @memory.date.strftime("%B %d, %Y") %></p>
               <p><%= @memory.description %></p>
-            </div>
-            <p class="card-memory-date"><%= @memory.date %></p>
           </div>
         </div>
       </div>
