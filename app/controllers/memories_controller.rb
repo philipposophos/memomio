@@ -5,6 +5,8 @@ class MemoriesController < ApplicationController
     else
       @memories = policy_scope(Memory)
     end
+
+    @memories = @memories.order(date: :desc, key_memory: :desc)
   end
 
   def new

@@ -32,24 +32,6 @@ export default class extends Controller {
     //animate text
     scene1.to("#info", { y: 8 * speed }, 0)
 
-
-
-    /*   Bird   */
-    gsap.fromTo("#bird", { opacity: 1 }, {
-        y: -250,
-        x: 800,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: ".scrollElement",
-            start: "15% top",
-            end: "60% 100%",
-            scrub: 4,
-            onEnter: function() { gsap.to("#bird", { scaleX: 1, rotation: 0 }) },
-            onLeave: function() { gsap.to("#bird", { scaleX: -1, rotation: -15 }) },
-        }
-    })
-
-
     /* Clouds  */
     let clouds = gsap.timeline();
     ScrollTrigger.create({
@@ -106,29 +88,6 @@ export default class extends Controller {
     scene2.fromTo("#h2-4", { y: 700 }, { y: 0 }, 0.2)
     scene2.fromTo("#h2-5", { y: 800 }, { y: 0 }, 0.3)
     scene2.fromTo("#h2-6", { y: 900 }, { y: 0 }, 0.3)
-
-
-
-    /* Bats */
-    gsap.fromTo("#bats", { opacity: 1, y: 400, scale: 0 }, {
-        y: 120,
-        scale: 0.8,
-        transformOrigin: "50% 50%",
-        ease: "power3.out",
-        scrollTrigger: {
-            trigger: ".scrollElement",
-            start: "40% top",
-            end: "70% 100%",
-            scrub: 3,
-            onEnter: function() {
-                gsap.utils.toArray("#bats path").forEach((item, i) => {
-                    gsap.to(item, { scaleX: 0.5, yoyo: true, repeat: 11, duration: 0.15, delay: 0.7 + (i / 10), transformOrigin: "50% 50%" })
-                });
-                gsap.set("#bats", { opacity: 1 })
-            },
-            onLeave: function() { gsap.to("#bats", { opacity: 0, delay: 2 }) },
-        }
-    })
 
 
     /* Sun increase */
@@ -194,23 +153,6 @@ export default class extends Controller {
     //gradient value change
     scene3.to("#bg2-grad", { attr: { cy: 600 } }, 0)
     scene3.to("#bg2-grad", { attr: { r: 500 } }, 0)
-
-
-    /*   falling star   */
-    gsap.to("#fstar", {
-        x: -700,
-        y: -250,
-        ease: "power4.out",
-        scrollTrigger: {
-            trigger: ".scrollElement",
-            start: "4000 top",
-            end: "6000 100%",
-            scrub: 5,
-            onEnter: function() { gsap.set("#fstar", { opacity: 1 }) },
-            onLeave: function() { gsap.set("#fstar", { opacity: 0 }) },
-        }
-    })
-
 
     //reset scrollbar position after refresh
     window.onbeforeunload = function() {

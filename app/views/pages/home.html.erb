@@ -11,35 +11,10 @@
     <h3>EXPLORE YOUR BIOGRAPHY</h3>
   </div>
 
-  <!-- Search bar section -->
-  <div class="search-bar" style="margin-top: 5%; margin-bottom: 10vh; text-align: center;">
-    <form class="search-box">
-    <%= form_with url: memories_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        placeholder: "Find a memory",
-        autocomplete: "off"
-      %>
-      <button type="reset"></button>
-      </form>
-    <% end %>
-  </div>
-
     <!-- Timeline section -->
   <section class="cd-timeline js-cd-timeline">
-    <% memories = Memory.where(user: current_user) %>
-    <% if memories.length < 16 %>
-      <% memos = memories.sort_by(&:date).reverse() %>
-    <% else %>
-      <% key_memos = memories.where(key_memory: true) %>
-      <% if key_memos.length < 15 %>
-        <% x = 15 - key_memos.length %>
-        <% non_key = memories.where(key_memory: false).sort_by(&:date).reverse().first(x) %>
-        <% memos = (key_memos + non_key).sort_by(&:date).reverse() %>
-      <% end %>
-    <% end %>
       <div class="container max-width-lg cd-timeline__container">
-        <% memos.each do |memory| %>
+        <% @memories.each do |memory| %>
           <%= link_to memory_path(memory), style: "text-decoration: none;" do %>
             <div class="cd-timeline__block">
               <div class="cd-timeline__img cd-timeline__img--picture">
@@ -50,8 +25,8 @@
 
               <div class="cd-timeline__content text-component" style="text-align: center;">
                 <h2><%= memory.title %></h2>
-                <p style="color: #184E77; font-weight: bold;"><%= memory.date.strftime("%B %d, %Y") %></p>
-                <p style="color: #184E77;"> <%= truncate(memory.description, :length => 60, :separator => ' ') %> </p>
+                <p class="date"><%= memory.date.strftime("%B %d, %Y") %></p>
+                <p> <%= truncate(memory.description, :length => 60, :separator => ' ') %> </p>
               </div> <!-- cd-timeline__content -->
             </div> <!-- cd-timeline__block -->
           <% end %>
@@ -62,4 +37,4 @@
 
 
 <%# Background animation %>
-<%= render "shared/bg_animation", animate: true, show_sun: false %>
+<%= render "shared/bg_animation", animate: true, show_sun: false, show_arrowdown: true %>

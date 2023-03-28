@@ -1,18 +1,39 @@
-<div class="container">
-  <div class="search-bar" style="margin-top: 5%; margin-bottom: 5%; text-align: center;">
-    <form class="search-box">
-    <%= form_with url: memories_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        placeholder: "Find a memory",
-        autocomplete: "off"
-      %>
-      <button type="reset"></button>
-      </form>
-    <% end %>
-  </div>
+<!-- Old Searchbar
+<div class="search-bar" style="margin-top: 5%; margin-bottom: 5%; text-align: center;">
+  <form class="search-box">
+  <%= form_with url: memories_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      placeholder: "Find a memory",
+      autocomplete: "off"
+    %>
+    <button type="reset"></button>
+    </form>
+  <% end %>
+</div>
+-->
 
-  <div class="row justify-content-center">
+<div class="search-container">
+  <%= form_with url: memories_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+        params[:query],
+        placeholder: "Find a memory"
+    %>
+    <%= button_tag do%>
+      <i class="fa fa-search"></i>
+    <% end %>
+  <% end %>
+</div>
+
+
+  <!-- Leonardo's styling for the search bar
+  <div class="search-container">
+    <input type="text" placeholder="Find a memory">
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </div>
+  -->
+
+  <!-- <div class="row justify-content-center">
     <div class="col-sm-8">
       <div id="memories">
         <% @memories.each do |memory| %>
@@ -21,8 +42,30 @@
         <% end %>
       </div>
     </div>
-  </div>
+  </div> -->
+
+  <section class="cd-timeline js-cd-timeline">
+    <div class="container max-width-lg cd-timeline__container">
+      <% @memories.each do |memory| %>
+        <%= link_to memory_path(memory), style: "text-decoration: none;" do %>
+          <div class="cd-timeline__block">
+            <div class="cd-timeline__img cd-timeline__img--picture">
+              <% if memory.photo.attached? %>
+                <%= cl_image_tag memory.photo.key, height: 300, width: 400, crop: :fill %>
+              <% end %>
+            </div> <!-- cd-timeline__img -->
+
+            <div class="cd-timeline__content text-component" style="text-align: center;">
+              <h2><%= memory.title %></h2>
+              <p class="date"><%= memory.date.strftime("%B %d, %Y") %></p>
+              <p> <%= truncate(memory.description, :length => 60, :separator => ' ') %> </p>
+            </div> <!-- cd-timeline__content -->
+          </div> <!-- cd-timeline__block -->
+        <% end %>
+      <% end %>
+    </div>
+  </section> <!-- cd-timeline -->
 </div>
 
 <%# Background animation %>
-<%= render "shared/bg_animation", animate: true, show_sun: true %>
+<%= render "shared/bg_animation", animate: true, show_sun: true, show_arrowdown: false %>

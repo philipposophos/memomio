@@ -6,6 +6,13 @@
   z-index: 5;
 }
 
+.navbar-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
   color: aliceblue;
