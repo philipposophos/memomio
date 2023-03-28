@@ -1,35 +1,35 @@
-<div class="container">
-  <!-- Old Searchbar
-  <div class="search-bar" style="margin-top: 5%; margin-bottom: 5%; text-align: center;">
-    <form class="search-box">
-    <%= form_with url: memories_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
+<!-- Old Searchbar
+<div class="search-bar" style="margin-top: 5%; margin-bottom: 5%; text-align: center;">
+  <form class="search-box">
+  <%= form_with url: memories_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      placeholder: "Find a memory",
+      autocomplete: "off"
+    %>
+    <button type="reset"></button>
+    </form>
+  <% end %>
+</div>
+-->
+
+<div class="search-container">
+  <%= form_with url: memories_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
         params[:query],
-        placeholder: "Find a memory",
-        autocomplete: "off"
-      %>
-      <button type="reset"></button>
-      </form>
-    <% end %>
-  </div>
-  -->
-
-  <div class="search-container">
-    <%= form_with url: memories_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-          params[:query],
-          placeholder: "Find a flat"
-      %>
-      <%= submit_tag "<i></i>", class="fa fa-search" %>
-    <% end %>
-  </div>
+        placeholder: "Find a memory"
+    %>
+    <%= submit_tag "Search", name: "", class: "fa fa-search" %>
+  <% end %>
+</div>
 
 
-  <!--Leonardo's styling for the search bar-->
+  <!-- Leonardo's styling for the search bar
   <div class="search-container">
     <input type="text" placeholder="Find a memory">
     <button type="submit"><i class="fa fa-search"></i></button>
   </div>
+  -->
 
   <!-- <div class="row justify-content-center">
     <div class="col-sm-8">
@@ -43,19 +43,9 @@
   </div> -->
 
   <section class="cd-timeline js-cd-timeline">
-    <% memories = Memory.where(user: current_user) %>
-    <% if memories.length < 16 %>
-      <% memos = memories.sort_by(&:date).reverse() %>
-    <% else %>
-      <% key_memos = memories.where(key_memory: true) %>
-      <% if key_memos.length < 15 %>
-        <% x = 15 - key_memos.length %>
-        <% non_key = memories.where(key_memory: false).sort_by(&:date).reverse().first(x) %>
-        <% memos = (key_memos + non_key).sort_by(&:date).reverse() %>
-      <% end %>
-    <% end %>
+    <% memories = @memories.where(user: current_user).sort_by(&:date).reverse() %>
       <div class="container max-width-lg cd-timeline__container">
-        <% memos.each do |memory| %>
+        <% memories.each do |memory| %>
           <%= link_to memory_path(memory), style: "text-decoration: none;" do %>
             <div class="cd-timeline__block">
               <div class="cd-timeline__img cd-timeline__img--picture">
