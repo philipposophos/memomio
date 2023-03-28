@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="about">
+    <h2>About Us</h2>
+    <hr>
+    <p style="font-size: 13px; text-align: center;">Get to know the team and the story behind MemoMio!</p>
+
+    <div class="about-img-card" style="margin-top: 20px;">
+      <p style="padding-top: 10px;">
+        Welcome to MemoMio, an application developed by Philipp Stähr, Paulyn Ompico,
+        Leonardo Genzolini, and Florent Theroude.
+        We are four Fullstack Web Development students at <a href="https://www.lewagon.com/">Le Wagon</a> Online,
+        with a mission to help people doing psychotherapy explore their biography
+        in a light and playful way.
+        We understand that psychotherapy can be emotionally challenging,
+        especially when it comes to revisiting difficult memories.
+      </p>
+      <p style="padding-top: 10px;">
+        With MemoMio, we aim to provide psychotherapy patients with a digital tool
+        that can assist them in structuring, revisiting, and making notes on their memories.
+        Our application allows patients to see their memories in context,
+        organized in a timeline with other memories and storylines,
+        in a visually light and playful digital environment.
+      </p>
+      <p style="padding-top: 10px;">
+        We believe that our app can help patients reconstruct their own biography
+        in a more manageable and less emotionally exhausting way.
+        Patients are encouraged to create, curate and make notes on their specific memories,
+        adding to or rewriting them as their perspectives change.
+        With time, patients can explore their memories' larger contexts and experience
+        a sense of empowerment to tell their own stories.
+      </p>
+      <p style="padding-top: 10px;">
+        At MemoMio, we strive to provide a supportive and user-friendly platform for psychotherapy patients,
+        enabling them to work towards their therapy goals in partnership with their therapist.
+        We are passionate about making a positive impact on people's lives,
+        and we hope that our application can help patients gain new perspectives on their own biography
+        and begin to question their behavioral patterns.
+      </p>
+    </div>
+
+    <div class="about-img-card">
+      <h3>Meet the Team</h3>
+      <div class="pro-img">
+        <a href="https://github.com/philipposophos" style="color: white; text-decoration: none;">
+          <div>
+            <%= image_tag "philipp.jpg", class: "avatar-bordered", alt: "avatar-bordered" %>
+            <p>Philipp</p>
+          </div>
+        </a>
+        <a href="https://github.com/paulynompico" style="color: white; text-decoration: none;">
+          <div>
+            <%= image_tag "paulyn.jpg", class: "avatar-bordered", alt: "avatar-bordered" %>
+            <p>Paulyn</p>
+          </div>
+        </a>
+        <a href="https://github.com/itsleonardog" style="color: white; text-decoration: none;">
+          <div>
+            <%= image_tag "leonardo.jpg", class: "avatar-bordered", alt: "avatar-bordered" %>
+            <p>Leonardo</p>
+          </div>
+        </a>
+        <a href="https://github.com/flo-kichijoji" style="color: white; text-decoration: none;">
+            <div>
+              <%= image_tag "flo.jpg", class: "avatar-bordered", alt: "avatar-bordered" %>
+              <p>Florent</p>
+            </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<%# Background animation %>
+<%= render "shared/bg_animation", animate: true, show_sun: false, show_arrowdown: false %>

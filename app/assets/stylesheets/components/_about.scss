@@ -1,0 +1,35 @@
+.about {
+  margin: 10px;
+}
+
+.pro-img {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.about p {
+  text-align: justify;
+  word-spacing: 0.1em;
+  color: #17122B;
+}
+
+.about h2, h3 {
+  text-align: center;
+  text-shadow: 0 0 0.5px #17122B;
+}
+
+.about-img-card {
+  // flex-grow: 1;
+  position: relative;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 10px;
+  padding-bottom: 0px;
+  margin: 0px;
+  margin-top: 15px;
+  border-radius: 5px;
+  border: 1px solid #17122B;
+  box-shadow: 0 0 5px #17122B;
+}
