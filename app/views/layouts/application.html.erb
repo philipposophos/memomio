@@ -12,6 +12,9 @@
     <!-- load new manifest.json and link it -->
     <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
     <!-- ... -->
+    <!-- render the partial in the head -->
+    <%= render 'shared/ios_pwa_links' %>
+    <!-- ... -->
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
