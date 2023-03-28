@@ -19,5 +19,8 @@ application.register("gsap", GsapController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import KeyButtonController from "./key_button_controller"
+application.register("key-button", KeyButtonController)
+
 import PhotoPreviewController from "./photo_preview_controller"
 application.register("photo-preview", PhotoPreviewController)
