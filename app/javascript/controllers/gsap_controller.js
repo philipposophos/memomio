@@ -55,7 +55,7 @@ export default class extends Controller {
         animation: sun,
         trigger: ".scrollElement",
         start: "top top",
-        end: "2200 100%",
+        end: "37% 100%",
         scrub: 1,
     });
 
@@ -63,12 +63,12 @@ export default class extends Controller {
     sun.to("#bg_grad", { attr: { cy: "330" } }, 0.00)
 
     //bg change
-    sun.to("#sun", { attr: { offset: "0.15" } }, 0.00)
-    sun.to("#bg_grad stop:nth-child(2)", { attr: { offset: "0.15" } }, 0.00)
-    sun.to("#bg_grad stop:nth-child(3)", { attr: { offset: "0.18" } }, 0.00)
-    sun.to("#bg_grad stop:nth-child(4)", { attr: { offset: "0.25" } }, 0.00)
-    sun.to("#bg_grad stop:nth-child(5)", { attr: { offset: "0.46" } }, 0.00)
-    sun.to("#bg_grad stop:nth-child(6)", { attr: { "stop-color": "#FF9171" } }, 0)
+    if (document.querySelector("#sun")) sun.to("#sun", { attr: { offset: "0.15" } }, 0.00)
+    if (document.querySelector("#bg_grad stop:nth-child(2)")) sun.to("#bg_grad stop:nth-child(2)", { attr: { offset: "0.15" } }, 0.00)
+    if (document.querySelector("#bg_grad stop:nth-child(3)")) sun.to("#bg_grad stop:nth-child(3)", { attr: { offset: "0.18" } }, 0.00)
+    if (document.querySelector("#bg_grad stop:nth-child(4)")) sun.to("#bg_grad stop:nth-child(4)", { attr: { offset: "0.25" } }, 0.00)
+    if (document.querySelector("#bg_grad stop:nth-child(5)")) sun.to("#bg_grad stop:nth-child(5)", { attr: { offset: "0.46" } }, 0.00)
+    if (document.querySelector("#bg_grad stop:nth-child(6)")) sun.to("#bg_grad stop:nth-child(6)", { attr: { "stop-color": "#FF9171" } }, 0)
 
 
 
@@ -95,17 +95,17 @@ export default class extends Controller {
     ScrollTrigger.create({
         animation: sun2,
         trigger: ".scrollElement",
-        start: "2200 top",
-        end: "5000 100%",
+        start: "37% top",
+        end: "80% 100%",
         scrub: 1,
     });
 
-    sun2.to("#sun", { attr: { offset: "0.6" } }, 0)
-    sun2.to("#bg_grad stop:nth-child(2)", { attr: { offset: "0.7" } }, 0)
-    sun2.to("#sun", { attr: { "stop-color": "#ffff00" } }, 0)
-    sun2.to("#lg4 stop:nth-child(1)", { attr: { "stop-color": "#623951" } }, 0)
-    sun2.to("#lg4 stop:nth-child(2)", { attr: { "stop-color": "#261F36" } }, 0)
-    sun2.to("#bg_grad stop:nth-child(6)", { attr: { "stop-color": "#45224A" } }, 0)
+    if (document.querySelector("#sun")) sun2.to("#sun", { attr: { offset: "0.6" } }, 0)
+    if (document.querySelector("#bg_grad stop:nth-child(2)")) sun2.to("#bg_grad stop:nth-child(2)", { attr: { offset: "0.7" } }, 0)
+    if (document.querySelector("#sun")) sun2.to("#sun", { attr: { "stop-color": "#ffff00" } }, 0)
+    if (document.querySelector("#lg4 stop:nth-child(1)")) sun2.to("#lg4 stop:nth-child(1)", { attr: { "stop-color": "#623951" } }, 0)
+    if (document.querySelector("#lg4 stop:nth-child(2)")) sun2.to("#lg4 stop:nth-child(2)", { attr: { "stop-color": "#261F36" } }, 0)
+    if (document.querySelector("#bg_grad stop:nth-child(6)")) sun2.to("#bg_grad stop:nth-child(6)", { attr: { "stop-color": "#45224A" } }, 0)
 
 
 
@@ -147,8 +147,8 @@ export default class extends Controller {
     scene3.fromTo("#stars", { opacity: 0 }, { opacity: 0.5, y: -500 }, 0)
 
     // Scroll Back text
-    scene3.fromTo("#arrow2", { opacity: 0 }, { opacity: 0.7, y: -710 }, 0.25)
-    scene3.fromTo("#text2", { opacity: 0 }, { opacity: 0.7, y: -710 }, 0.3)
+    if (document.querySelector("#arrow2")) scene3.fromTo("#arrow2", { opacity: 0 }, { opacity: 0.7, y: -710 }, 0.25)
+    if (document.querySelector("#text2")) scene3.fromTo("#text2", { opacity: 0 }, { opacity: 0.7, y: -710 }, 0.3)
 
     //gradient value change
     scene3.to("#bg2-grad", { attr: { cy: 600 } }, 0)
