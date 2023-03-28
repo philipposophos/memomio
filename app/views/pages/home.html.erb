@@ -28,7 +28,30 @@
                 <h2><%= memory.title %></h2>
                 <p class="date"><%= memory.date.strftime("%B %d, %Y") %></p>
                 <p> <%= truncate(memory.description, :length => 60, :separator => ' ') %> </p>
+                <div class="cd-timeline__tags" style="display: flex; justify-content: space-between; padding: 0 20px;">
+                  <% if memory.tags.length == 0 %>
+                    <i class="fa-regular fa-face-meh" style="color: transparent; font-size: 20px;"></i>
+                  <% else %>
+                    <% memory.tags.each do |tag| %>
+                      <% if tag.emotional_tag.emotion == "bad"  %>
+                          <i class="fa-regular fa-face-frown" style="color: teal; font-size: 20px; text-shadow: 0 1px 5px rgba(0,0,0,0.4);"></i>
+                      <% elsif tag.emotional_tag.emotion == "okay"  %>
+                          <i class="fa-regular fa-face-meh" style="color: green; font-size: 20px; text-shadow: 0 1px 5px rgba(0,0,0,0.4);"></i>
+                      <% elsif tag.emotional_tag.emotion == "good"  %>
+                          <i class="fa-regular fa-face-smile-beam" style="color: green; font-size: 20px; text-shadow: 0 1px 5px rgba(0,0,0,0.4);"></i>
+                      <% elsif tag.emotional_tag.emotion == "trigger"  %>
+                          <i class="fa-solid fa-bolt-lightning" style="color: orange; font-size: 20px; text-shadow: 0 1px 5px rgba(0,0,0,0.4);"></i>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                  <% if memory.key_memory %>
+                    <i class="fa-solid fa-key" style="color: #FF7842; font-size: 20px; text-shadow: 0 1px 5px rgba(0,0,0,0.4);"></i>
+                  <% else %>
+                    <i class="fa-solid fa-key" style="color: transparent; font-size: 20px;"></i>
+                  <% end %>
+                </div>
               </div> <!-- cd-timeline__content -->
+
             </div> <!-- cd-timeline__block -->
           <% end %>
         <% end %>
