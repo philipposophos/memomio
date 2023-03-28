@@ -1,44 +1,14 @@
 <div class="container">
   <div class="about">
     <h2>About Us</h2>
+    <hr>
     <p style="font-size: 13px; text-align: center;">Get to know the team and the story behind MemoMio!</p>
 
-    <hr>
-
-    <div class="about-img-card">
-      <div class="pro-img">
-        <a href="https://github.com/philipposophos" style="color: white; text-decoration: none;">
-          <div>
-            <%= image_tag "philipp.jpg", class: "avatar-bordered", alt: "avatar-bordered" %>
-            <p>Philipp</p>
-          </div>
-        </a>
-        <a href="https://github.com/paulynompico" style="color: white; text-decoration: none;">
-          <div>
-            <%= image_tag "paulyn.jpg", class: "avatar-bordered", alt: "avatar-bordered" %>
-            <p>Paulyn</p>
-          </div>
-        </a>
-        <a href="https://github.com/itsleonardog" style="color: white; text-decoration: none;">
-          <div>
-            <%= image_tag "leonardo.jpg", class: "avatar-bordered", alt: "avatar-bordered" %>
-            <p>Leonardo</p>
-          </div>
-        </a>
-        <a href="https://github.com/flo-kichijoji" style="color: white; text-decoration: none;">
-            <div>
-              <%= image_tag "flo.jpg", class: "avatar-bordered", alt: "avatar-bordered" %>
-              <p>Florent</p>
-            </div>
-        </a>
-      </div>
-    </div>
-
-    <div class="about-img-card" style="margin-top: 20px; ">
+    <div class="about-img-card" style="margin-top: 20px;">
       <p style="padding-top: 10px;">
-        Welcome to MemoMio, an application developed by <a href="https://github.com/philipposophos" target="_blank">Philipp Stähr</a>, <a href="https://github.com/paulynompico" target="_blank">Paulyn Ompico</a>,
-        <a href="https://github.com/itsleonardog" target="_blank">Leonardo Genzolini</a>, and <a href="https://github.com/flo-kichijoji" target="_blank">Florent Theroude</a>.
-        We are four Fullstack Web Development students at <a href="https://www.lewagon.com/">Le Wagon Online</a>,
+        Welcome to MemoMio, an application developed by Philipp Stähr, Paulyn Ompico,
+        Leonardo Genzolini, and Florent Theroude.
+        We are four Fullstack Web Development students at <a href="https://www.lewagon.com/">Le Wagon</a> Online,
         with a mission to help people doing psychotherapy explore their biography
         in a light and playful way.
         We understand that psychotherapy can be emotionally challenging,
@@ -67,8 +37,40 @@
         and begin to question their behavioral patterns.
       </p>
     </div>
+
+    <div class="about-img-card">
+      <h3>Meet the Team</h3>
+      <div class="pro-img">
+        <a href="https://github.com/philipposophos" style="color: white; text-decoration: none;">
+          <div>
+            <%= image_tag "philipp.jpg", class: "avatar-bordered", alt: "avatar-bordered" %>
+            <p>Philipp</p>
+          </div>
+        </a>
+        <a href="https://github.com/paulynompico" style="color: white; text-decoration: none;">
+          <div>
+            <%= image_tag "paulyn.jpg", class: "avatar-bordered", alt: "avatar-bordered" %>
+            <p>Paulyn</p>
+          </div>
+        </a>
+        <a href="https://github.com/itsleonardog" style="color: white; text-decoration: none;">
+          <div>
+            <%= image_tag "leonardo.jpg", class: "avatar-bordered", alt: "avatar-bordered" %>
+            <p>Leonardo</p>
+          </div>
+        </a>
+        <a href="https://github.com/flo-kichijoji" style="color: white; text-decoration: none;">
+            <div>
+              <%= image_tag "flo.jpg", class: "avatar-bordered", alt: "avatar-bordered" %>
+              <p>Florent</p>
+            </div>
+        </a>
+      </div>
+    </div>
   </div>
+
 </div>
 
+
 <%# Background animation %>
-<%= render "shared/bg_animation", animate: true, show_sun: false %>
+<%= render "shared/bg_animation", animate: true, show_sun: false, show_arrowdown: false %>

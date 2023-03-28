@@ -16,8 +16,9 @@
   color: #17122B;
 }
 
-.about h2 {
+.about h2, h3 {
   text-align: center;
+  text-shadow: 0 0 0.5px #17122B;
 }
 
 .about-img-card {
@@ -27,6 +28,7 @@
   padding: 10px;
   padding-bottom: 0px;
   margin: 0px;
+  margin-top: 15px;
   border-radius: 5px;
   border: 1px solid #17122B;
   box-shadow: 0 0 5px #17122B;
