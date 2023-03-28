@@ -19,7 +19,9 @@
         params[:query],
         placeholder: "Find a memory"
     %>
-    <%= submit_tag "Search", name: "", class: "fa fa-search" %>
+    <%= button_tag do%>
+      <i class="fa fa-search"></i>
+    <% end %>
   <% end %>
 </div>
 
@@ -43,26 +45,25 @@
   </div> -->
 
   <section class="cd-timeline js-cd-timeline">
-    <% memories = @memories.where(user: current_user).sort_by(&:date).reverse() %>
-      <div class="container max-width-lg cd-timeline__container">
-        <% memories.each do |memory| %>
-          <%= link_to memory_path(memory), style: "text-decoration: none;" do %>
-            <div class="cd-timeline__block">
-              <div class="cd-timeline__img cd-timeline__img--picture">
-                <% if memory.photo.attached? %>
-                  <%= cl_image_tag memory.photo.key, height: 300, width: 400, crop: :fill %>
-                <% end %>
-              </div> <!-- cd-timeline__img -->
+    <div class="container max-width-lg cd-timeline__container">
+      <% @memories.each do |memory| %>
+        <%= link_to memory_path(memory), style: "text-decoration: none;" do %>
+          <div class="cd-timeline__block">
+            <div class="cd-timeline__img cd-timeline__img--picture">
+              <% if memory.photo.attached? %>
+                <%= cl_image_tag memory.photo.key, height: 300, width: 400, crop: :fill %>
+              <% end %>
+            </div> <!-- cd-timeline__img -->
 
-              <div class="cd-timeline__content text-component" style="text-align: center;">
-                <h2><%= memory.title %></h2>
-                <p class="date"><%= memory.date.strftime("%B %d, %Y") %></p>
-                <p> <%= truncate(memory.description, :length => 60, :separator => ' ') %> </p>
-              </div> <!-- cd-timeline__content -->
-            </div> <!-- cd-timeline__block -->
-          <% end %>
+            <div class="cd-timeline__content text-component" style="text-align: center;">
+              <h2><%= memory.title %></h2>
+              <p class="date"><%= memory.date.strftime("%B %d, %Y") %></p>
+              <p> <%= truncate(memory.description, :length => 60, :separator => ' ') %> </p>
+            </div> <!-- cd-timeline__content -->
+          </div> <!-- cd-timeline__block -->
         <% end %>
-      </div>
+      <% end %>
+    </div>
   </section> <!-- cd-timeline -->
 </div>
 

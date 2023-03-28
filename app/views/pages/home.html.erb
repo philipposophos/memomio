@@ -13,19 +13,8 @@
 
     <!-- Timeline section -->
   <section class="cd-timeline js-cd-timeline">
-    <% memories = Memory.where(user: current_user) %>
-    <% if memories.length < 16 %>
-      <% memos = memories.sort_by(&:date).reverse() %>
-    <% else %>
-      <% key_memos = memories.where(key_memory: true) %>
-      <% if key_memos.length < 15 %>
-        <% x = 15 - key_memos.length %>
-        <% non_key = memories.where(key_memory: false).sort_by(&:date).reverse().first(x) %>
-        <% memos = (key_memos + non_key).sort_by(&:date).reverse() %>
-      <% end %>
-    <% end %>
       <div class="container max-width-lg cd-timeline__container">
-        <% memos.each do |memory| %>
+        <% @memories.each do |memory| %>
           <%= link_to memory_path(memory), style: "text-decoration: none;" do %>
             <div class="cd-timeline__block">
               <div class="cd-timeline__img cd-timeline__img--picture">
