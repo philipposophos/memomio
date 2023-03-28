@@ -16,7 +16,6 @@
         </div>
         <div class="memory-infos" data-edit-memory-target="infos">
           <% if @memory.photo.attached? %>
-            <i class="fa-solid fa-pen" data-action="click->edit-memory#displayForm" style="text-shadow: 0 1px 3px black; position: absolute; right: 20px; margin-top: 10px; color: whitesmoke; outline: gray;"></i>
             <%= cl_image_tag @memory.photo.key, height: 300, width: 400, crop: :fill %>
           <% end %>
           <div class="card-memory-infos">
