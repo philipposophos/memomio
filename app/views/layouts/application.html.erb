@@ -2,8 +2,16 @@
 <html>
   <head>
     <title>Memomio</title>
+    <!-- setup favicon -->
     <%= favicon_link_tag "favicon.png", rel: "icon", type: "image/png" %>
+    <!-- ... -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- prepare app for A2HS (Add to home screen) -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- load new manifest.json and link it -->
+    <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
+    <!-- ... -->
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>

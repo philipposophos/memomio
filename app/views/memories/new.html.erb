@@ -4,8 +4,9 @@
       <div class="form">
         <h2>Create a new memory</h2>
         <hr>
-        <%= simple_form_for @memory, data: { controller: 'flatpickr' } do |f| %>
-          <%= f.input :photo, as: :file %>
+        <%= simple_form_for @memory, data: { controller: 'photo-preview flatpickr' } do |f| %>
+          <%= image_tag "", width: 300, class: "hidden", data: { photo_preview_target: "preview" } %>
+          <%= f.input :photo, as: :file, input_html: { class: 'd-none', data: { photo_preview_target: "input", action:"change->photo-preview#displayPreview" }}, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo'%>
           <%= f.input :date, as: :string, input_html: { data: { flatpickr_target: "memoryDate" } } %>
           <%= f.input :title %>
           <%= f.input :description, as: :text %>
