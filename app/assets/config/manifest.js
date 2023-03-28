@@ -2,5 +2,9 @@
 //= link application.css
 //= link application.js
 //= require_tree .
-//= link *.jpg
-//= link *.png
+//= link favicon.png
+//= link temp_logo.png
+//= link flo.jpg
+//= link leonardo.jpg
+//= link paulyn.jpg
+//= link philipp.jpg
