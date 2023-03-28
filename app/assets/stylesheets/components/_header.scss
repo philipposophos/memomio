@@ -40,6 +40,7 @@
   text-align: center;
   text-decoration: none;
   color: rgba(153, 14, 14, 0.468);
+ 
 }
 
 
@@ -62,10 +63,7 @@
   animation: pulse 1s infinite;
 }
 
-.sun-btn.is-clicked {
-  background: linear-gradient(to bottom, gray 0%, dimgray 100%);
-}
-.sun-btn.is-clicked:before {
+.sun-btn:active:before {
   animation: blastOut 1s;
 }
 

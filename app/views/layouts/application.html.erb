@@ -14,13 +14,14 @@
     <!-- ... -->
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
   </head>
 
-  <body>
+  <body class="animate__animated animate__fadeIn">
     <%= render "shared/flashes" %>
 
     <div class="wrapper">
@@ -31,5 +32,6 @@
 
       <%= render "shared/footer" %>
     </div>
+    
   </body>
 </html>

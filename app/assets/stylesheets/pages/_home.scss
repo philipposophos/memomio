@@ -34,3 +34,11 @@ svg {
   left: 0;
   z-index: -1;
 }
+
+.scrollElement {
+  position: absolute;
+  height: 3000px;
+  width: 100%;
+  top: 0;
+  z-index: -1;
+}
