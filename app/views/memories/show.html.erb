@@ -8,7 +8,7 @@
             <%= f.input :date, as: :string, input_html: { data: { flatpickr_target: "memoryDate" } } %>
             <%= f.input :title %>
             <%= f.input :description, as: :text %>
-            <%= f.input :key_memory, :input_html => { :checked => true } %>
+            <%= f.input :key_memory %>
             <div class="form-action">
               <%= f.button :submit, "Update", class: "btn btn-primary" %>
             </div>
@@ -35,7 +35,7 @@
       <div data-controller="key-button">
         <%= simple_form_for @memory do |f| %>
           <div class="d-none">
-          <%= f.input :key_memory, :input_html => { :checked => true } %>
+          <input class="form-check-input is-valid boolean optional" value="<%= @memory.key_memory ? false : true %>" name="memory[key_memory]" id="memory_key_memory">
           </div>
           <div>
             <% if @memory.key_memory == true %>
