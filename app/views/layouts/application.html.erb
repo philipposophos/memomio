@@ -28,10 +28,14 @@
     <%= render "shared/flashes" %>
 
     <div class="wrapper">
-      <div class="content">
-        <%= render "shared/navbar" %>
-        <%= yield %>
-      </div>
+      <% if user_signed_in? %>
+        <div class="content">
+      <% else %>
+        <div class="content" style="height: 100vh;">
+      <% end %>
+          <%= render "shared/navbar" %>
+          <%= yield %>
+        </div>
 
       <%= render "shared/footer" %>
     </div>
