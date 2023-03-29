@@ -20,7 +20,7 @@
     <!-- Timeline section -->
 <% if user_signed_in? %>
   <section class="cd-timeline js-cd-timeline">
-      <h2 class="timeline-header">Your most recent memories:</h2>
+      <h2 class="timeline-header">Recent memories:</h2>
       <div class="container max-width-lg cd-timeline__container">
         <% @memories.each do |memory| %>
           <%= link_to memory_path(memory), style: "text-decoration: none;" do %>
@@ -64,7 +64,7 @@
         <% end %>
       </div>
       <div class="memories-button">
-        <%= link_to "Show All Memories", memories_path, class: "btn btn-primary" %>
+        <%= link_to "Your biography", memories_path, class: "btn btn-primary" %>
       </div>
   </section> <!-- cd-timeline -->
   <% end %>
