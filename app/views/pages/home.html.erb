@@ -19,7 +19,7 @@
     </div>
 
       <!-- Timeline section -->
-  <% if user_signed_in? %>
+  <% if user_signed_in? && current_user.memories.size > 0 %>
     <section class="cd-timeline js-cd-timeline">
         <h2 class="timeline-header">Recent memories:</h2>
         <div class="container max-width-lg cd-timeline__container">
@@ -73,9 +73,9 @@
 
 
   <%# Background animation %>
-  <% if user_signed_in? %>
+  <% if user_signed_in? && current_user.memories.size > 0 %>
     <%= render "shared/bg_animation", animate: true, show_sun: false, show_arrowdown: true %>
   <% else %>
-    <%= render "shared/bg_animation", animate: false, show_sun: false, show_arrowdown: true %>
+    <%= render "shared/bg_animation", animate: false, show_sun: false, show_arrowdown: false %>
   <% end %>
 </div>
