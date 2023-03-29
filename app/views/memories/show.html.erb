@@ -51,9 +51,9 @@
 
       <%# Tagging %>
       <% if @memory.tags.length == 0 %>
-        <%= link_to new_memory_tag_path(@memory) do %>
+        <button style="background-color: transparent; border: 0;" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <i class="fa-regular fa-face-meh" style="color: aliceblue; font-size: 20px; text-shadow: 0 1px 5px rgba(0,0,0,0.4);"></i>
-        <% end %>
+        </button>
       <% else %>
         <% @memory.tags.each do |tag| %>
           <% if tag.emotional_tag.emotion == "bad"  %>
@@ -81,6 +81,27 @@
     </div>
   </div>
 
+  <%# modal %>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add emotional tag to <%= @memory.title %></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form">
+            <%= simple_form_for [@memory, @tag] do |f| %>
+              <%= f.association :emotional_tag, collection: @emotional_tags.map {|tag| [tag["emotion"], tag["id"]]} %>
+              <%= f.submit %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# notes %>
   <div class="container" style="padding-bottom: 80px;">
     <div class="card-memory">
       <h5 style="text-align: center; margin-top: 20px;">Notes</h5>
