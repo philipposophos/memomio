@@ -1,18 +1,19 @@
+<head><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.2/css/all.css"></head>
 <div style="width:100vw;">
   <div data-controller="edit-memory">
     <div class="container">
       <div class="card-memory animate__animated animate__zoomIn">
         <div class="d-none" data-edit-memory-target="form">
-          <h2 style="text-align: center">Edit this memory</h2>
+          <h2 style="text-align: center">Edit Memory</h2>
           <hr>
           <%= simple_form_for @memory, data: { controller: 'photo-preview flatpickr' } do |f| %>
-          <%= image_tag "", width: 300, class: "d-block mx-auto", data: { photo_preview_target: "preview" } %>
-          <%= f.input :photo, as: :file, input_html: { class: 'd-none', data: { photo_preview_target: "input", action:"change->photo-preview#displayPreview" }}, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
-          <%= f.input :date, as: :string, input_html: { data: { flatpickr_target: "memoryDate" } } %>
-          <%= f.input :title %>
-          <%= f.input :description, as: :text %>
+          <%= image_tag "", width: '100%', crop: :fill, class: "d-block mx-auto", data: { photo_preview_target: "preview" } %>
+          <%= f.input :photo, as: :file, input_html: { class: 'd-none', data: { photo_preview_target: "input", action:"change->photo-preview#displayPreview" }}, label_html: {class: "upload-photo"} %>
+          <%= f.input :date, label: false, as: :string, input_html: { data: { flatpickr_target: "memoryDate" } } %>
+          <%= f.input :title, label: false %>
+          <%= f.input :description, label: false, as: :text %>
             <div class="form-action" style="text-align: center;">
-            <%= f.button :submit, "Save", class: "btn btn-primary" %>
+            <%= f.submit "✔", style: "color: white; border: #17122B; border-radius: 4px; background-color: #17122B; margin-bottom: 15px; align-item: center; width: 100%; margin 0 auto;" %>
             </div>
           <% end %>
         </div>
@@ -87,7 +88,7 @@
       <div class="form" style="margin-top: 0; padding-top: o;">
         <%= simple_form_for [@memory, @note] do |f| %>
           <%= f.input_field :content, :placeholder => "Add note", style: "width: 100%;" %>
-          <%= f.submit "✔️", style: "border: 1px solid #5e548e; border-radius: 4px; background-color: transparent; margin-bottom: 15px; align-item: center; width: 100%; margin 0 auto;" %>
+          <%= f.submit "✔", style: "color: white; border: #17122B; border-radius: 4px; background-color: #17122B; margin-bottom: 15px; align-item: center; width: 100%; margin 0 auto;" %>
         <% end %>
       </div>
       <div class="container" data-controller="edit-note">
@@ -103,8 +104,8 @@
                 <% end %></p>
               </div>
                 <%= simple_form_for note, html: {class: "d-none", style:"width: 88vw;", data: {edit_note_target: "form", action: "submit->edit-movie#update"}} do |f| %>
-                  <%= f.input :content %>
-                  <%= f.submit "Update" %>
+                  <%= f.input :content, label: false %>
+                  <%= f.submit "✔", style: "color: white; border: #17122B; border-radius: 4px; background-color: #17122B; margin-bottom: 15px; align-item: center; width: 100%; margin 0 auto;" %>
                 <% end %>
             <% end %>
           <% end %>

@@ -1,17 +1,18 @@
+<head><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.2/css/all.css"></head>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-sm-4">
-      <div class="form animate__animated animate__zoomIn">
-        <h2 style="text-align: center">Create a new memory</h2>
+      <div class="card-memory form animate__animated animate__zoomIn">
+        <h2 style="text-align: center">Add Memory</h2>
         <hr>
         <%= simple_form_for @memory, data: { controller: 'photo-preview flatpickr' } do |f| %>
-          <%= image_tag "", width: 300, class: "d-block mx-auto", data: { photo_preview_target: "preview" } %>
-          <%= f.input :photo, as: :file, input_html: { class: 'd-none', data: { photo_preview_target: "input", action:"change->photo-preview#displayPreview" }}, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
-          <%= f.input :date, as: :string, input_html: { data: { flatpickr_target: "memoryDate" } } %>
-          <%= f.input :title %>
-          <%= f.input :description, as: :text %>
+          <%= image_tag "", width: '100%', crop: :fill, data: { photo_preview_target: "preview" } %>
+          <%= f.input :photo, as: :file, input_html: { class: 'd-none', data: { photo_preview_target: "input", action:"change->photo-preview#displayPreview" }}, label_html: {class: "upload-photo"} %>
+          <%= f.input :date, label: false, as: :string, input_html: { data: { flatpickr_target: "memoryDate" } } %>
+          <%= f.input :title, :placeholder => "Title*", label: false %>
+          <%= f.input :description, label: false, :placeholder => "Tell me about this memory*", as: :text %>
           <div class="form-action">
-            <%= f.button :submit, "Create", class: "btn btn-primary" %>
+          <%= f.submit "✔", style: "color: white; border: #17122B; border-radius: 4px; background-color: #17122B; margin-bottom: 15px; align-item: center; width: 100%; margin 0 auto;" %>
           </div>
         <% end %>
       </div>
