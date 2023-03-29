@@ -82,20 +82,14 @@
   </div>
 
   <%# modal %>
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 80%;">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Add emotional tag to <%= @memory.title %></h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
         <div class="modal-body">
-          <div class="form">
-            <%= simple_form_for [@memory, @tag] do |f| %>
-              <%= f.association :emotional_tag, collection: @emotional_tags.map {|tag| [tag["emotion"], tag["id"]]} %>
-              <%= f.submit %>
-            <% end %>
-          </div>
+          <%= simple_form_for [@memory, @tag] do |f| %>
+            <%= f.association :emotional_tag, collection: @emotional_tags.map {|tag| [tag["emotion"], tag["id"]]} %>
+            <%= f.submit %>
+          <% end %>
         </div>
       </div>
     </div>
