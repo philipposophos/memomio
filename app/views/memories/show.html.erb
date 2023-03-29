@@ -87,7 +87,7 @@
       <div class="modal-content">
         <div class="modal-body">
           <%= simple_form_for [@memory, @tag] do |f| %>
-            <%= f.association :emotional_tag, collection: @emotional_tags.map {|tag| [tag["emotion"], tag["id"]]} %>
+            <%= f.association :emotional_tag, collection: @emotional_tags.map {|tag| [tag["emotion"], tag["id"]]}, label: false, :include_blank => false %>
             <%= f.submit 'Add Tag', class: 'btn btn-primary', style: "width: 100%;" %>
           <% end %>
         </div>
