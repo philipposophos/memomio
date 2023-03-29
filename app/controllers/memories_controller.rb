@@ -16,8 +16,12 @@ class MemoriesController < ApplicationController
   def show
     @memory = Memory.find(params[:id])
     @note = Note.new
+    @tag = Tag.new
+    @emotional_tags = EmotionalTag.all
     authorize @memory
     authorize @note
+    authorize @tag
+    authorize @emotional_tags
   end
 
   def create
