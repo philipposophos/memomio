@@ -5,7 +5,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # lt -p 3000 --print-requests
-  # https://empty-terms-bet-90-0-128-170.loca.lt
+  # https://plain-days-guess-90-0-128-170.loca.lt/
   config.hosts << /\A[a-z\d-]+\.loca\.lt\z/
 
   # In the development environment your application's code is reloaded any time
