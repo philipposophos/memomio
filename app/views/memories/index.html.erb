@@ -25,6 +25,21 @@
   <% end %>
 </div>
 
+<div class="filters d-flex justify-content-around">
+ <%= form_with url: memories_path, method: :get do %>
+  <select name="filter_option" onchange="this.form.submit()">
+    <option value="">Filter by emotion</option>
+    <option value="good">Good</option>
+    <option value="okay">Okay</option>
+    <option value="bad">Bad</i></option>
+    <option value="trigger">Trigger</option>
+  </select>
+    <select name="filter_key" onchange="this.form.submit()">
+    <option value="">Filter by key</option>
+    <option value="true">Key Memories</option>
+  </select>
+  <% end %>
+ </div>
 
   <!-- Leonardo's styling for the search bar
   <div class="search-container">
@@ -47,20 +62,62 @@
   <section class="cd-timeline js-cd-timeline">
     <div class="container max-width-lg cd-timeline__container">
       <% @memories.each do |memory| %>
-        <%= link_to memory_path(memory), style: "text-decoration: none;" do %>
-          <div class="cd-timeline__block">
-            <div class="cd-timeline__img cd-timeline__img--picture">
-              <% if memory.photo.attached? %>
-                <%= cl_image_tag memory.photo.key, height: 300, width: 400, crop: :fill %>
-              <% end %>
-            </div> <!-- cd-timeline__img -->
+        <% if params[:filter_option].present? %>
+          <% if memory.tags.length != 0 %>
+            <% memory.tags.each do |tag| %>
+              <% if tag.emotional_tag.emotion == params[:filter_option] %>
+                <%= link_to memory_path(memory), style: "text-decoration: none;" do %>
+                  <div class="cd-timeline__block">
+                    <div class="cd-timeline__img cd-timeline__img--picture">
+                      <% if memory.photo.attached? %>
+                        <%= cl_image_tag memory.photo.key, height: 300, width: 400, crop: :fill %>
+                      <% end %>
+                    </div> <!-- cd-timeline__img -->
 
-            <div class="cd-timeline__content text-component" style="text-align: center;">
-              <h2><%= memory.title %></h2>
-              <p class="date"><%= memory.date.strftime("%B %d, %Y") %></p>
-              <p> <%= truncate(memory.description, :length => 60, :separator => ' ') %> </p>
-            </div> <!-- cd-timeline__content -->
-          </div> <!-- cd-timeline__block -->
+                    <div class="cd-timeline__content text-component" style="text-align: center;">
+                      <h2><%= memory.title %></h2>
+                      <p class="date"><%= memory.date.strftime("%B %d, %Y") %></p>
+                      <p> <%= truncate(memory.description, :length => 60, :separator => ' ') %> </p>
+                    </div> <!-- cd-timeline__content -->
+                  </div> <!-- cd-timeline__block -->
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% elsif params[:filter_key].present? %>
+          <% if memory.key_memory == true %>
+            <%= link_to memory_path(memory), style: "text-decoration: none;" do %>
+              <div class="cd-timeline__block">
+                <div class="cd-timeline__img cd-timeline__img--picture">
+                  <% if memory.photo.attached? %>
+                    <%= cl_image_tag memory.photo.key, height: 300, width: 400, crop: :fill %>
+                  <% end %>
+                </div> <!-- cd-timeline__img -->
+
+                <div class="cd-timeline__content text-component" style="text-align: center;">
+                  <h2><%= memory.title %></h2>
+                  <p class="date"><%= memory.date.strftime("%B %d, %Y") %></p>
+                  <p> <%= truncate(memory.description, :length => 60, :separator => ' ') %> </p>
+                </div> <!-- cd-timeline__content -->
+              </div> <!-- cd-timeline__block -->
+            <% end %>
+          <% end %>
+        <% else %>
+          <%= link_to memory_path(memory), style: "text-decoration: none;" do %>
+            <div class="cd-timeline__block">
+              <div class="cd-timeline__img cd-timeline__img--picture">
+                <% if memory.photo.attached? %>
+                  <%= cl_image_tag memory.photo.key, height: 300, width: 400, crop: :fill %>
+                <% end %>
+              </div> <!-- cd-timeline__img -->
+
+              <div class="cd-timeline__content text-component" style="text-align: center;">
+                <h2><%= memory.title %></h2>
+                <p class="date"><%= memory.date.strftime("%B %d, %Y") %></p>
+                <p> <%= truncate(memory.description, :length => 60, :separator => ' ') %> </p>
+              </div> <!-- cd-timeline__content -->
+            </div> <!-- cd-timeline__block -->
+          <% end %>
         <% end %>
       <% end %>
     </div>
