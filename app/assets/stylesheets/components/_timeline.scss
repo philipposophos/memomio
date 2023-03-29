@@ -6,6 +6,13 @@
 
 // -------------------------------------------------
 
+.timeline-header {
+  color: aliceblue;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.47);
+  text-align: center;
+  padding-bottom: 20px;
+}
+
 .cd-timeline {
   overflow: hidden;
   padding: 0;
@@ -142,4 +149,20 @@
   100% {
     transform: translateX(0);
   }
+}
+
+.memories-button {
+  text-align: center;
+}
+
+.memories-button .btn {
+  margin-top: 20px;
+  background-color: #ffc42f;
+  color: #3B2F5A;
+}
+
+.about-page {
+  margin-top: 20px;
+  width: 80%;
+  left: 35px;
 }
