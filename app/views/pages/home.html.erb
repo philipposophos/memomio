@@ -12,6 +12,7 @@
   </div>
 
     <!-- Timeline section -->
+<% if user_signed_in? %>
   <section class="cd-timeline js-cd-timeline">
       <h2 class="timeline-header">Your most recent memories:</h2>
       <div class="container max-width-lg cd-timeline__container">
@@ -60,8 +61,13 @@
         <%= link_to "Show All Memories", memories_path, class: "btn btn-primary" %>
       </div>
   </section> <!-- cd-timeline -->
+  <% end %>
 </div>
 
 
 <%# Background animation %>
-<%= render "shared/bg_animation", animate: true, show_sun: false, show_arrowdown: true %>
+<% if user_signed_in? %>
+  <%= render "shared/bg_animation", animate: true, show_sun: false, show_arrowdown: true %>
+<% else %>
+  <%= render "shared/bg_animation", animate: false, show_sun: false, show_arrowdown: true %>
+<% end %>
