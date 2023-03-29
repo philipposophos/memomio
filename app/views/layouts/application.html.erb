@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Memomio</title>
+    <title><%= meta_title %></title>
+    <meta name="description" content="<%= meta_description %>">
+
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="<%= meta_title %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="<%= meta_image %>" />
+    <meta property="og:description" content="<%= meta_description %>" />
+    <meta property="og:site_name" content="<%= meta_title %>" />
+
     <!-- setup favicon -->
     <%= favicon_link_tag "favicon.png", rel: "icon", type: "image/png" %>
     <!-- ... -->
@@ -15,6 +25,7 @@
     <!-- render the partial in the head -->
     <%= render 'shared/ios_pwa_links' %>
     <!-- ... -->
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -39,6 +50,6 @@
 
       <%= render "shared/footer" %>
     </div>
-    
+
   </body>
 </html>

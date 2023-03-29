@@ -8,3 +8,4 @@
 //= link leonardo.jpg
 //= link paulyn.jpg
 //= link philipp.jpg
+//= link cover.png
