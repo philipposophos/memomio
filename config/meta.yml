@@ -1,0 +1,4 @@
+meta_product_name: "MemoMio"
+meta_title: "MemoMio - Reflect. Revisit. Grow."
+meta_description: "MemoMio is a private digital memory album created to assist you in reflecting on your life journey. Think of it as a personal notebook where you can organize, revisit, and annotate your memories. Its visually light and engaging digital environment allows you to view your memories in chronological order, arranged in a timeline that captures the essence of your life's story."
+meta_image: "cover.png" # should exist in `app/assets/images/`

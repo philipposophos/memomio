@@ -1,18 +1,3 @@
-<!-- Old Searchbar
-<div class="search-bar" style="margin-top: 5%; margin-bottom: 5%; text-align: center;">
-  <form class="search-box">
-  <%= form_with url: memories_path, method: :get, class: "d-flex" do %>
-    <%= text_field_tag :query,
-      params[:query],
-      placeholder: "Find a memory",
-      autocomplete: "off"
-    %>
-    <button type="reset"></button>
-    </form>
-  <% end %>
-</div>
--->
-
 <div class="search-container">
   <%= form_with url: memories_path, method: :get, class: "d-flex" do %>
     <%= text_field_tag :query,
@@ -25,42 +10,125 @@
   <% end %>
 </div>
 
-
-  <!-- Leonardo's styling for the search bar
-  <div class="search-container">
-    <input type="text" placeholder="Find a memory">
-    <button type="submit"><i class="fa fa-search"></i></button>
-  </div>
-  -->
-
-  <!-- <div class="row justify-content-center">
-    <div class="col-sm-8">
-      <div id="memories">
-        <% @memories.each do |memory| %>
-          <h4><%= link_to memory.title, memory_path(memory), style: 'text-decoration: none;' %></h4>
-          <p><%= memory.description %></p>
-        <% end %>
+<div class="filters d-flex justify-content-center">
+  <%= form_with url: memories_path, method: :get, html: {class: "filter-form"} do %>
+    <fieldset class="form-group check_boxes optional snippet_tags">
+      <div class="tag-list d-flex justify-content-between align-items-center">
+        <div class="find-by d-flex align-items-center">
+          <legend class="col-form-label pt-0 text-center">Filter by</legend>
+        </div>
+        <div class="tag-list d-flex justify-content-center align-items-center">
+          <div class="tag-item">
+            <input class="form-check-input check_boxes optional tag-selector" type="checkbox" value="good" name="filter_option" id="filter_option_good" onchange="this.form.submit()">
+            <label class="form-check-label collection_check_boxes" for="filter_option_good"><i class="fa-regular fa-face-smile-beam"></i></label>
+          </div>
+          <div class="tag-item">
+            <input class="form-check-input check_boxes optional tag-selector" type="checkbox" value="okay" name="filter_option" id="filter_option_okay" onchange="this.form.submit()">
+            <label class="form-check-label collection_check_boxes" for="filter_option_okay"><i class="fa-regular fa-face-meh"></i></label>
+          </div>
+          <div class="tag-item">
+            <input class="form-check-input check_boxes optional tag-selector" type="checkbox" value="bad" name="filter_option" id="filter_option_bad" onchange="this.form.submit()">
+            <label class="form-check-label collection_check_boxes" for="filter_option_bad"><i class="fa-regular fa-face-frown"></i></label>
+          </div>
+          <div class="tag-item">
+            <input class="form-check-input check_boxes optional tag-selector" type="checkbox" value="trigger" name="filter_option" id="filter_option_trigger" onchange="this.form.submit()">
+            <label class="form-check-label collection_check_boxes" for="filter_option_trigger"><i class="fa-solid fa-bolt-lightning"></i></label>
+          </div>
+          <div class="tag-item">
+            <input class="form-check-input check_boxes optional tag-selector" type="checkbox" value="true" name="filter_key" id="filter_key_true" onchange="this.form.submit()">
+            <label class="form-check-label collection_check_boxes" for="filter_key_true"><i class="fa-solid fa-key"></i></label>
+          </div>
+        </div>
       </div>
-    </div>
-  </div> -->
+    </fieldset>
+  <% end %>
+</div>
+
+
+
+
 
   <section class="cd-timeline js-cd-timeline">
     <div class="container max-width-lg cd-timeline__container">
       <% @memories.each do |memory| %>
-        <%= link_to memory_path(memory), style: "text-decoration: none;" do %>
-          <div class="cd-timeline__block">
-            <div class="cd-timeline__img cd-timeline__img--picture">
-              <% if memory.photo.attached? %>
-                <%= cl_image_tag memory.photo.key, height: 300, width: 400, crop: :fill %>
-              <% end %>
-            </div> <!-- cd-timeline__img -->
+        <% if params[:filter_option].present? %>
+          <% if memory.tags.length != 0 %>
+            <% memory.tags.each do |tag| %>
+              <% if tag.emotional_tag.emotion == params[:filter_option] %>
+                <%= link_to memory_path(memory), style: "text-decoration: none;" do %>
+                  <div class="cd-timeline__block">
+                    <div class="cd-timeline__img cd-timeline__img--picture">
+                      <% if memory.photo.attached? %>
+                        <%= cl_image_tag memory.photo.key, height: 300, width: 400, crop: :fill %>
+                      <% end %>
+                    </div> <!-- cd-timeline__img -->
 
-            <div class="cd-timeline__content text-component" style="text-align: center;">
-              <h2><%= memory.title %></h2>
-              <p class="date"><%= memory.date.strftime("%B %d, %Y") %></p>
-              <p> <%= truncate(memory.description, :length => 60, :separator => ' ') %> </p>
-            </div> <!-- cd-timeline__content -->
-          </div> <!-- cd-timeline__block -->
+                    <div class="cd-timeline__content text-component" style="text-align: center;">
+                      <h2><%= memory.title %></h2>
+                      <p class="date"><%= memory.date.strftime("%B %d, %Y") %></p>
+                      <p> <%= truncate(memory.description, :length => 60, :separator => ' ') %> </p>
+                    </div> <!-- cd-timeline__content -->
+                  </div> <!-- cd-timeline__block -->
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% elsif params[:filter_key].present? %>
+          <% if memory.key_memory == true %>
+            <%= link_to memory_path(memory), style: "text-decoration: none;" do %>
+              <div class="cd-timeline__block">
+                <div class="cd-timeline__img cd-timeline__img--picture">
+                  <% if memory.photo.attached? %>
+                    <%= cl_image_tag memory.photo.key, height: 300, width: 400, crop: :fill %>
+                  <% end %>
+                </div> <!-- cd-timeline__img -->
+
+                <div class="cd-timeline__content text-component" style="text-align: center;">
+                  <h2><%= memory.title %></h2>
+                  <p class="date"><%= memory.date.strftime("%B %d, %Y") %></p>
+                  <p> <%= truncate(memory.description, :length => 60, :separator => ' ') %> </p>
+                </div> <!-- cd-timeline__content -->
+              </div> <!-- cd-timeline__block -->
+            <% end %>
+          <% end %>
+        <% else %>
+          <%= link_to memory_path(memory), style: "text-decoration: none;" do %>
+            <div class="cd-timeline__block">
+              <div class="cd-timeline__img cd-timeline__img--picture">
+                <% if memory.photo.attached? %>
+                  <%= cl_image_tag memory.photo.key, height: 300, width: 400, crop: :fill %>
+                <% end %>
+              </div> <!-- cd-timeline__img -->
+
+              <div class="cd-timeline__content text-component" style="text-align: center;">
+                <h2><%= memory.title %></h2>
+                <p class="date"><%= memory.date.strftime("%B %d, %Y") %></p>
+                <p> <%= truncate(memory.description, :length => 60, :separator => ' ') %> </p>
+                <div class="cd-timeline__tags" style="display: flex; justify-content: space-between; padding: 0 20px;">
+                  <% if memory.tags.length == 0 %>
+                    <i class="fa-regular fa-face-meh" style="color: transparent; font-size: 20px;"></i>
+                  <% else %>
+                    <% memory.tags.each do |tag| %>
+                      <% if tag.emotional_tag.emotion == "bad"  %>
+                          <i class="fa-regular fa-face-frown" style="color: $dark-blue; font-size: 20px; text-shadow: 0 1px 5px rgba(0,0,0,0.4);"></i>
+                      <% elsif tag.emotional_tag.emotion == "okay"  %>
+                          <i class="fa-regular fa-face-meh" style="color: $dark-blue; font-size: 20px; text-shadow: 0 1px 5px rgba(0,0,0,0.4);"></i>
+                      <% elsif tag.emotional_tag.emotion == "good"  %>
+                          <i class="fa-regular fa-face-smile-beam" style="color: $dark-blue; font-size: 20px; text-shadow: 0 1px 5px rgba(0,0,0,0.4);"></i>
+                      <% elsif tag.emotional_tag.emotion == "trigger"  %>
+                          <i class="fa-solid fa-bolt-lightning" style="color: $dark-blue; font-size: 20px; text-shadow: 0 1px 5px rgba(0,0,0,0.4);"></i>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                  <% if memory.key_memory %>
+                    <i class="fa-solid fa-key" style="color: $dark-blue; font-size: 20px; text-shadow: 0 1px 5px rgba(0,0,0,0.4);"></i>
+                  <% else %>
+                    <i class="fa-solid fa-key" style="color: transparent; font-size: 20px;"></i>
+                  <% end %>
+                </div>
+              </div> <!-- cd-timeline__content -->
+            </div> <!-- cd-timeline__block -->
+          <% end %>
         <% end %>
       <% end %>
     </div>

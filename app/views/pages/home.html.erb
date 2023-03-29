@@ -1,40 +1,81 @@
-<div class="container">
-  <!-- Header section -->
-  <div class="header">
-    <h1></h1>
-    <!-- CSS "rippled" button -->
-    <div class="header-create-memory animate__animated animate__fadeInDown">
-      <%= link_to new_memory_path, class: "btn sun-btn" do %>
-        <%# <i class="fa-solid fa-plus" style="font-size: 50px; text-shadow: 0 1px 4px white;"></i> %>
-      <% end %>
-    </div>
-    <h3 class="animate__animated animate__fadeInDown">EXPLORE YOUR BIOGRAPHY</h3>
-  </div>
-
-    <!-- Timeline section -->
-  <section class="cd-timeline js-cd-timeline">
-      <div class="container max-width-lg cd-timeline__container">
-        <% @memories.each do |memory| %>
-          <%= link_to memory_path(memory), style: "text-decoration: none;" do %>
-            <div class="cd-timeline__block">
-              <div class="cd-timeline__img cd-timeline__img--picture">
-                <% if memory.photo.attached? %>
-                  <%= cl_image_tag memory.photo.key, height: 300, width: 400, crop: :fill %>
-                <% end %>
-              </div> <!-- cd-timeline__img -->
-
-              <div class="cd-timeline__content text-component" style="text-align: center;">
-                <h2><%= memory.title %></h2>
-                <p class="date"><%= memory.date.strftime("%B %d, %Y") %></p>
-                <p> <%= truncate(memory.description, :length => 60, :separator => ' ') %> </p>
-              </div> <!-- cd-timeline__content -->
-            </div> <!-- cd-timeline__block -->
+<div class="animate__animated animate__fadeIn">
+  <div class="container">
+    <!-- Header section -->
+    <div class="header">
+      <h1></h1>
+      <!-- CSS "rippled" button -->
+      <div class="header-create-memory animate__animated animate__fadeInDown">
+        <% if user_signed_in? %>
+          <%= link_to new_memory_path, class: "btn sun-btn" do %>
+            <%# <i class="fa-solid fa-plus" style="font-size: 50px; text-shadow: 0 1px 4px white;"></i> %>
+          <% end %>
+        <% else %>
+          <%= link_to new_user_registration_path, class: "btn sun-btn" do %>
+            <%# <i class="fa-solid fa-plus" style="font-size: 50px; text-shadow: 0 1px 4px white;"></i> %>
           <% end %>
         <% end %>
       </div>
-  </section> <!-- cd-timeline -->
+      <h3 class="animate__animated animate__fadeInDown">REFLECT AND GROW</h3>
+    </div>
+
+      <!-- Timeline section -->
+  <% if user_signed_in? && current_user.memories.size > 0 %>
+    <section class="cd-timeline js-cd-timeline">
+        <h2 class="timeline-header">Recent memories:</h2>
+        <div class="container max-width-lg cd-timeline__container">
+          <% @memories.each do |memory| %>
+            <%= link_to memory_path(memory), style: "text-decoration: none;" do %>
+              <div class="cd-timeline__block">
+                <div class="cd-timeline__img cd-timeline__img--picture">
+                  <% if memory.photo.attached? %>
+                    <%= cl_image_tag memory.photo.key, height: 300, width: 400, crop: :fill %>
+                  <% end %>
+                </div> <!-- cd-timeline__img -->
+
+                <div class="cd-timeline__content text-component" style="text-align: center;">
+                  <h2><%= memory.title %></h2>
+                  <p class="date"><%= memory.date.strftime("%B %d, %Y") %></p>
+                  <p> <%= truncate(memory.description, :length => 60, :separator => ' ') %> </p>
+                  <div class="cd-timeline__tags" style="display: flex; justify-content: space-between; padding: 0 20px;">
+                    <% if memory.tags.length == 0 %>
+                      <i class="fa-regular fa-face-meh" style="color: transparent; font-size: 20px;"></i>
+                    <% else %>
+                      <% memory.tags.each do |tag| %>
+                        <% if tag.emotional_tag.emotion == "bad"  %>
+                            <i class="fa-regular fa-face-frown" style="color: $dark-blue; font-size: 20px; text-shadow: 0 1px 5px rgba(0,0,0,0.4);"></i>
+                        <% elsif tag.emotional_tag.emotion == "okay"  %>
+                            <i class="fa-regular fa-face-meh" style="color: $dark-blue; font-size: 20px; text-shadow: 0 1px 5px rgba(0,0,0,0.4);"></i>
+                        <% elsif tag.emotional_tag.emotion == "good"  %>
+                            <i class="fa-regular fa-face-smile-beam" style="color: $dark-blue; font-size: 20px; text-shadow: 0 1px 5px rgba(0,0,0,0.4);"></i>
+                        <% elsif tag.emotional_tag.emotion == "trigger"  %>
+                            <i class="fa-solid fa-bolt-lightning" style="color: $dark-blue; font-size: 20px; text-shadow: 0 1px 5px rgba(0,0,0,0.4);"></i>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                    <% if memory.key_memory %>
+                      <i class="fa-solid fa-key" style="color: $dark-blue; font-size: 20px; text-shadow: 0 1px 5px rgba(0,0,0,0.4);"></i>
+                    <% else %>
+                      <i class="fa-solid fa-key" style="color: transparent; font-size: 20px;"></i>
+                    <% end %>
+                  </div>
+                </div> <!-- cd-timeline__content -->
+
+              </div> <!-- cd-timeline__block -->
+            <% end %>
+          <% end %>
+        </div>
+        <div class="memories-button">
+          <%= link_to "Your biography", memories_path, class: "btn btn-primary" %>
+        </div>
+    </section> <!-- cd-timeline -->
+    <% end %>
+  </div>
+
+
+  <%# Background animation %>
+  <% if user_signed_in? && current_user.memories.size > 0 %>
+    <%= render "shared/bg_animation", animate: true, show_sun: false, show_arrowdown: true %>
+  <% else %>
+    <%= render "shared/bg_animation", animate: false, show_sun: false, show_arrowdown: false %>
+  <% end %>
 </div>
-
-
-<%# Background animation %>
-<%= render "shared/bg_animation", animate: true, show_sun: false, show_arrowdown: true %>

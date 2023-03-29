@@ -1,0 +1,39 @@
+.tag-item {
+  // display: inline-block;
+}
+
+.tag-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.tag-selector + label {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.5rem;
+  border-radius: 50rem;
+  padding: 0.1rem 0.5rem;
+  // background-color: #ECEAFF;
+  color: $dark-purple;
+  // border: 1px solid $dark-purple;
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.tag-selector:checked + label {
+  background-color: $dark-purple;
+  color: white;
+}
+
+.filter-form {
+  position: relative;
+  margin: 10px auto;
+  width: 90%;
+  max-width: 500px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid $dark-purple;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.92);
+  color: $dark-purple;
+}

@@ -115,7 +115,7 @@ export default class extends Controller {
     ScrollTrigger.create({
         animation: sceneTransition,
         trigger: ".scrollElement",
-        start: "70% top",
+        start: "50% top",
         end: "bottom 100%",
         scrub: 3,
     });

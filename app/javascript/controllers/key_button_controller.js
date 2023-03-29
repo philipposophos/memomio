@@ -2,24 +2,21 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="key-button"
 export default class extends Controller {
-  static targets = ["key", "input"]
+  static target = ["form"]
   
   connect() {
     console.log("Connected")
   }
 
-
-  displayForm() {
-    this.keyTarget.classList.remove("d-none")
-  }
-
   update(event) {
     event.preventDefault()
-    const url = this.keyTarget.action
+    console.log("Update action")
+    const url = this.formTarget.action
+
     fetch(url, {
       method: "PATCH",
       headers: { "Accept": "text/plain" },
-      body: new FormData(this.keyTarget)
+      body: new FormData(this.formTarget)
     })
       .then(response => response.text())
       .then((data) => {
