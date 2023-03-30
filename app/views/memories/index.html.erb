@@ -2,7 +2,8 @@
   <%= form_with url: memories_path, method: :get, class: "d-flex" do %>
     <%= text_field_tag :query,
         params[:query],
-        placeholder: "Find a memory"
+        placeholder: "Find a memory",
+        autocomplete: "off"
     %>
     <%= button_tag do%>
       <i class="fa fa-search"></i>
