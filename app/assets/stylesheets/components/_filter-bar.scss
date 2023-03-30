@@ -27,10 +27,13 @@
 
 .filter-form {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 10px auto;
   width: 90%;
   max-width: 500px;
-  padding: 2.5px 20px;
+  padding: 3px 20px;
   box-sizing: border-box;
   border: 2px solid $dark-purple;
   border-radius: 20px;
