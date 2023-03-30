@@ -13,7 +13,7 @@ class NotesController < ApplicationController
     if @note.save
       redirect_to memory_path(@memory)
     else
-      render :new, status: :unprocessable_entity
+      redirect_to memory_path(@memory)
     end
   end
 
