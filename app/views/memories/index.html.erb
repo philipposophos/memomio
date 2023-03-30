@@ -10,35 +10,30 @@
   <% end %>
 </div>
 
-<div class="filters d-flex justify-content-center">
+<div class="filters">
   <%= form_with url: memories_path, method: :get, html: {class: "filter-form"} do %>
-    <fieldset class="form-group check_boxes optional snippet_tags">
-      <div class="tag-list d-flex justify-content-between align-items-center">
-        <div class="find-by d-flex align-items-center">
-          <legend class="col-form-label pt-0 text-center">Filter by</legend>
-        </div>
-        <div class="tag-list d-flex justify-content-center align-items-center">
+    <fieldset class="form-group check_boxes optional snippet_tags" style="margin: 0; padding: 0 10px; width: 100%;">
+        <div class="tag-list d-flex justify-content-around">
           <div class="tag-item">
             <input class="form-check-input check_boxes optional tag-selector" type="checkbox" value="good" name="filter_option" id="filter_option_good" onchange="this.form.submit()">
-            <label class="form-check-label collection_check_boxes" for="filter_option_good"><i class="fa-regular fa-face-smile-beam"></i></label>
+            <label class="form-check-label collection_check_boxes d-flex justify-content-center" style="margin: 0; padding: 0;" for="filter_option_good"><i class="fa-regular fa-face-smile-beam"></i></label>
           </div>
           <div class="tag-item">
             <input class="form-check-input check_boxes optional tag-selector" type="checkbox" value="okay" name="filter_option" id="filter_option_okay" onchange="this.form.submit()">
-            <label class="form-check-label collection_check_boxes" for="filter_option_okay"><i class="fa-regular fa-face-meh"></i></label>
+            <label class="form-check-label collection_check_boxes d-flex justify-content-center" style="margin: 0; padding: 0;" for="filter_option_okay"><i class="fa-regular fa-face-meh"></i></label>
           </div>
           <div class="tag-item">
             <input class="form-check-input check_boxes optional tag-selector" type="checkbox" value="bad" name="filter_option" id="filter_option_bad" onchange="this.form.submit()">
-            <label class="form-check-label collection_check_boxes" for="filter_option_bad"><i class="fa-regular fa-face-frown"></i></label>
+            <label class="form-check-label collection_check_boxes d-flex justify-content-center" style="margin: 0; padding: 0;" for="filter_option_bad"><i class="fa-regular fa-face-frown"></i></label>
           </div>
           <div class="tag-item">
             <input class="form-check-input check_boxes optional tag-selector" type="checkbox" value="trigger" name="filter_option" id="filter_option_trigger" onchange="this.form.submit()">
-            <label class="form-check-label collection_check_boxes" for="filter_option_trigger"><i class="fa-solid fa-bolt-lightning"></i></label>
+            <label class="form-check-label collection_check_boxes d-flex justify-content-center" style="margin: 0; padding: 0;" for="filter_option_trigger"><i class="fa-solid fa-bolt-lightning"></i></label>
           </div>
           <div class="tag-item">
             <input class="form-check-input check_boxes optional tag-selector" type="checkbox" value="true" name="filter_key" id="filter_key_true" onchange="this.form.submit()">
-            <label class="form-check-label collection_check_boxes" for="filter_key_true"><i class="fa-solid fa-key"></i></label>
+            <label class="form-check-label collection_check_boxes d-flex justify-content-center" style="margin: 0; padding: 0;" for="filter_key_true"><i class="fa-solid fa-key"></i></label>
           </div>
-        </div>
       </div>
     </fieldset>
   <% end %>

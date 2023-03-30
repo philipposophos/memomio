@@ -1,5 +1,7 @@
 .tag-item {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .tag-selector {
@@ -9,12 +11,16 @@
 
 .tag-selector + label {
   cursor: pointer;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 0.7rem;
   border-radius: 50rem;
   padding: 0.1rem 0.5rem;
-  background-color: #ECEAFF;
+  background-color: transparent;
   color: #7E73FF;
+  width: 45px;
+  height: 45px;
   // border: 1px solid #7E73FF;
   margin-right: 0.6rem;
   margin-bottom: 0.4rem;
