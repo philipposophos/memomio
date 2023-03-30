@@ -112,10 +112,10 @@
             <% @memory.notes.each do |note| %>
               <div class="note-infos" style="padding: 20px;" data-edit-note-target="infos">
                 <p style="font-size: 20px; color: black;">"<%= note.content %>"</p>
-                <p style="color: gray; margin-left: 0;"><%= note.created_at.strftime("%b %d, %Y at %I:%M%p") %>
+                <p style="color: #3B2F5A; margin-left: 0;"><%= note.created_at.strftime("%b %d, %Y at %I:%M%p") %>
                 <i class="fa-solid fa-pen" style="font-size: 15px; margin-left: 15%;"data-action="click->edit-note#displayForm"></i>
                 <%= link_to note_path(note.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-                  <i class="fa-solid fa-trash" style="font-size: 15px; color:gray; padding-left: 9%;"></i>
+                  <i class="fa-solid fa-trash" style="font-size: 15px; color: #3B2F5A; padding-left: 9%;"></i>
                 <% end %></p>
               </div>
                 <%= simple_form_for note, html: {class: "d-none", style:"width: 88vw;", data: {edit_note_target: "form", action: "submit->edit-movie#update"}} do |f| %>
