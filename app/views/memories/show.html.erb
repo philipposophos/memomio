@@ -19,7 +19,7 @@
         </div>
         <div class="memory-infos" data-edit-memory-target="infos">
           <% if @memory.photo.attached? %>
-            <%= cl_image_tag @memory.photo.key, height: 300, width: 400, crop: :fill %>
+            <%= cl_image_tag @memory.photo.key, height: 300, width: 335, crop: :fill %>
           <% end %>
           <div class="card-memory-infos">
             <h2><%= @memory.title %></h2>
