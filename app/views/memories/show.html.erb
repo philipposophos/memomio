@@ -10,7 +10,7 @@
           <%= image_tag "", width: '100%', crop: :fill, class: "d-block mx-auto", data: { photo_preview_target: "preview" } %>
           <%= f.input :photo, as: :file, input_html: { class: 'd-none', data: { photo_preview_target: "input", action:"change->photo-preview#displayPreview" }}, label_html: {class: "upload-photo"} %>
           <%= f.input :date, label: false, as: :string, input_html: { data: { flatpickr_target: "memoryDate" } } %>
-          <%= f.input :title, label: false %>
+          <%= f.input :title, label: false, input_html: { autocomplete: "off" } %>
           <%= f.input :description, label: false, as: :text %>
             <div class="form-action" style="text-align: center;">
             <%= f.submit "✔", style: "color: white; border: #17122B; border-radius: 4px; background-color: #17122B; margin-bottom: 15px; align-item: center; width: 100%; margin 0 auto;" %>
