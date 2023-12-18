@@ -1,1 +1,10 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+Mobile web app developed by the MemoMio team from Le Wagon.
+
+Add your memories
+![Screenshot](memomio_home.png)
+
+Go through your memories
+![Screenshot](memomio_index.png)
+
+Add tags and notes to each memory
+![Screenshot](memomio_show.png)
